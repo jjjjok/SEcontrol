@@ -1,20 +1,60 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: yy
+  Date: 2020/12/27
+  Time: 13:57
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <meta charset="UTF-8">
+<head lang="en">
+    <meta charset="utf-8">
     <title>登录</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
 </head>
-<body><!-------------------login-------------------------->
+<body>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
+
+            </li>
+
+        </ul>
+    </nav>
+    <div class="header_2">
+        <ul class="header_2_1">
+            <li class="header_2_1_5">
+                <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
+            </li>
+            <li class="header_2_1_5">
+                <a href="${pageContext.request.contextPath}/usermanager/tologin">管理员登录</a>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>登录</span>
+    </div>
+</div>
 <div class="login">
-    <form action="${pageContext.request.contextPath}/user/login" method="post"><h1><a href="index.html"></a></h1>
-        <p></p>
-        <div class="msg-warn hide"><b></b>公共场所不建议自动登录，以防账号丢失</div>
-        <p><input type="text" name="name" value="" placeholder="用户名/手机号"></p>
-        <p><input type="text" name="password" value="" placeholder="密码"></p>
+    <form action="${pageContext.request.contextPath}/user/login" method="post">
+        <p>用户登录</p>
+        <div class="msg-warn hide"><b></b>公共场所请注意你的账号安全</div>
+        <p><input type="text" name="name" value="" placeholder="用户名" ></p>
+        <p><input type="text" name="password" value="" placeholder="密码" ></p>
         <p><input type="submit" name="" value="登  录"></p>
-        <p class="txt"><a class="" href="">免费注册</a><a href="">忘记密码？</a></p></form>
+        <p class="txt"><a class="" href="${pageContext.request.contextPath}/user/toregister">免费注册</a><a href="${pageContext.request.contextPath}/user/toforget">忘记密码？</a></p></form>
+</div>
+<div id="footer">
+    <p class="dibu">
+        Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号
+    </p>
 </div>
 </body>
 </html>
+

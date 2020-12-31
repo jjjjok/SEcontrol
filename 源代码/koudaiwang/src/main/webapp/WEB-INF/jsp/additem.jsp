@@ -9,23 +9,40 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>后台管理</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
 </head>
 <body>
-<div class="topbar-wrap white">
-    <div class="topbar-inner clearfix">
-        <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
-            <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
-            </ul>
-        </div>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
 
+            </li>
+
+        </ul>
+    </nav>
+    <div class="header_2">
+        <ul class="header_2_1">
+            <li class="header_2_1_1">
+                <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
+            </li>
+
+
+        </ul>
+    </div>
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>后台管理</span>
     </div>
 </div>
+
+
 <div class="container clearfix">
     <div class="sidebar-wrap">
         <div class="sidebar-title">
@@ -34,10 +51,13 @@
         <div class="sidebar-content">
             <ul class="sidebar-list">
                 <li>
-
+                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
 
-                        <li><a href="design.html"><i class="icon-font">&#xe005;</i>商品管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/usermanager/selectalluser"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+
+                        <li><a href="${pageContext.request.contextPath}/itemmanager/selectallitem"><i class="icon-font">&#xe006;</i>商品管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/itemmanager/itemcheck"><i class="icon-font">&#xe006;</i>商品审核</a></li>
 
                     </ul>
                 </li>
@@ -48,37 +68,44 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">商品管理</a><span class="crumb-step">&gt;</span><span>新增商品</span></div>
+            <div class="crumb-list">
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="${pageContext.request.contextPath}/upload/additem" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/upload/manadditem" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody><tr>
                             <th width="120"><i class="require-red">*</i>分类：</th>
                             <td>
                                 <select name="fl" id="catid" class="required">
                                     <option value="">请选择</option>
-                                    <option value="1">宿舍用品</option><option value="2">日常用具</option><option value="3">学习用具</option><option value="4">零食</option>
+                                    <option value="1">宿舍用品</option><option value="2">二手书本</option><option value="3">电子产品</option><option value="4">生活用品</option><option value="5">零食小吃</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <th><i class="require-red">*</i>商品名称：</th>
                             <td>
-                                <input class="common-text required" id="title" name="name" size="50" value="" type="text">
+                                <input class="common-text required" id="title" name="name"  size="50" value="" type="text">
                             </td>
                         </tr>
+
+
+
                         <tr>
-                            <th>购买价格：</th>
+                            <th><i class="require-red">*</i>购买价格：</th>
                             <td><input class="common-text" name="aprice" size="50" value="" type="text"></td>
                         </tr>
                         <tr>
                         <tr>
-                            <th>出售价格：</th>
+                            <th><i class="require-red">*</i>出售价格：</th>
                             <td><input class="common-text" name="bprice" size="50" value="" type="text"></td>
                         </tr>
                         <tr>
+                            <th><i class="require-red">*</i>数量：</th>
+                            <td><input class="common-text" name="num" size="50" value="" type="text"></td>
+                        </tr>
+
 
 
                             <th><i class="require-red">*</i>上传图片：</th>
@@ -88,12 +115,7 @@
                             <th>描述：</th>
                             <td><textarea name="content" class="common-textarea" cols="30" style="width: 98%;" rows="10"></textarea></td>
                         </tr>
-                        <tr>
-                        <tr>
-                            <th>数量：</th>
-                            <td><textarea name="num" class="common-textarea" cols="30" style="width: 98%;" rows="10"></textarea></td>
-                        </tr>
-                        <tr>
+
                             <th></th>
                             <td>
                                 <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
@@ -107,6 +129,7 @@
 
     </div>
     <!--/main-->
+</div>
 </div>
 </body>
 </html>

@@ -1,5 +1,8 @@
 package com.SE.port;
 
+import com.SE.dao.ItemDao;
+import com.SE.dao.OrderDao;
+
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
@@ -11,8 +14,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class MimiPaySample {
     // 将userKey和secret修改为自己的userKey和secret
-    private final static String USER_KEY = "D65CBA68BB4BEEF12C0BA0FC2AE3D5B6";
-    private final static String SECRET = "9C7230343FAB371B8A08C19DDDDD7DFF";
+    private final static String USER_KEY = "ED49C70E22413CAB05331B565F6F084E";
+    private final static String SECRET = "A724992A922CC24771F13D55440796E6";
 
     // 支付时调用该函数
     public void pay(PayParams payParams, HttpServletResponse response) {
@@ -71,6 +74,20 @@ public class MimiPaySample {
     }
 
     private boolean writeData2DB(NotifyParams notifyParams) {
+        String confirm_id=notifyParams.getOutTradeNo();
+        confirm_id = confirm_id.replace("koudaiwang","");
+        OrderDao.updateOrder(Integer.parseInt(confirm_id));
+        int max=OrderDao.selectMaxOId(Integer.parseInt(confirm_id));
+        int min=OrderDao.selectMinOId(Integer.parseInt(confirm_id));
+        for(int i=min;i<=max;i++){
+            int item_id=ItemDao.selectIdByOId(i);
+            int ordernum=ItemDao.selectOrderNumByOId(i);
+            int num= ItemDao.selectNumById(item_id);
+            int count=num-ordernum;
+            ItemDao.updateItemNum(item_id,count);
+        }
+
+
         // 开发者根据自己填写业务填写
         return true;
     }

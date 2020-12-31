@@ -12,32 +12,59 @@
 <html>
 <head lang="en">
     <meta charset="utf-8"/>
-    <title>cart</title>
+    <title>购物车</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/proList.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/index.css"/>
 </head>
-<body><!--------------------------------------cart--------------------->
-<div class="head ding">
-    <div class="wrapper clearfix">
-        <div class="clearfix" id="top"><h1 class="fl"><a href="index.html"><img src="img/logo.png"/></a></h1>
-            <div class="fr clearfix" id="top1"><p class="fl"><a href="login.html" id="login">登录</a><a href="reg.html"
-                                                                                                      id="reg">注册</a>
-            </p>
-                <form action="#" method="get" class="fl"><input type="text" placeholder="搜索"/><input type="button"/>
-                </form>
-                <div class="btn fl clearfix"><a href="mygxin.html"><img src="img/grzx.png"/></a><a href="#" class="er1"><img
-                        src="img/ewm.png"/></a><a href="cart.html"><img src="img/gwc.png"/></a>
-                    <p><a href="#"><img src="img/smewm.png"/></a></p></div>
-            </div>
-        </div>
+<body>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
+
+            </li>
+
+
+            <c:if test="${isLogin !=1}">
+                <li><a href="${pageContext.request.contextPath}/user/tologin"style="color: red" >叮，请登录…</a></li>
+            </c:if>
+            <c:if test="${isLogin ==1}">
+                <li><a href=""style="color: red" >你好，${name.user_name}</a></li>
+            </c:if>
+        </ul>
+    </nav>
+    <div class="header_2">
+        <ul class="header_2_1">
+            <li class="header_2_1_1">
+                <a href="${pageContext.request.contextPath}/user/myorder">我的口袋</a>
+            </li>
+            <li class="header_2_1_2">
+                <a href="${pageContext.request.contextPath}/item/collectshow">购物车</a>
+            </li>
+            <li class="header_2_1_3">
+                <a href="${pageContext.request.contextPath}/item/tousersell" >我要出售</a>
+            </li>
+
+            <li class="header_2_1_5">
+                <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
+            </li>
+        </ul>
     </div>
-</div>
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>购物车</span>
+    </div>
+
 <div class="cart mt"><!-----------------logo------------------->
     <!--<div class="logo"><h1 class="wrapper clearfix"><a href="index.html"><img class="fl" src="img/temp/logo.png"></a><img class="top" src="img/temp/cartTop01.png"></h1></div>-->
     <!-----------------site------------------->
-    <div class="site"><p class=" wrapper clearfix"><span class="fl">购物车</span><img class="top"
-                                                                                   src="img/temp/cartTop01.png"><a
-            href="index.html" class="fr">继续购物&gt;</a></p></div><!-----------------table------------------->
+
+    <form action="${pageContext.request.contextPath}/item/collectsdelete" id="myform" method="post">
+    <div class="site"><p class=" wrapper clearfix"><span class="fl"></span><img class="top"></p></div><!-----------------table------------------->
     <div class="table wrapper">
         <div class="tr">
             <div>商品</div>
@@ -67,18 +94,34 @@
                     class="fl">${i.collect_count}</span><img class="fl add" src="${pageContext.request.contextPath}/img/temp/add.jpg"></p>
             </div>
             <div class="price sAll">￥<fmt:formatNumber type="number" value="${i.item_bprice*i.collect_count}" maxFractionDigits="2" /></div>
-            <div class="price"><a class="del" datasrc="${i.item_id}" href="#2">删除</a></div>
+            <div class="price"><a class="del" datasrc="${i.item_id}" href="javascript:Delete('确定删除该商品吗','collectdelete?itemid=${i.item_id}')">删除</a></div>
         </div>
 
 </c:forEach>
+        <script>
+            function Delete(inf,url){
+                if(confirm(inf)){
+                    location.href=url;
+                }
+            }
+
+            function Deletecollects(inf,formname){
+                if(confirm(inf)){
+                    var form=document.getElementById(formname);
+                    form.submit();
+                }
+            }
+
+        </script>
 
 
         <div class="goOn">空空如也~<a href="index.html">去逛逛</a></div>
         <div class="tr clearfix"><label class="fl"><input class="checkAll" type="checkbox"/><span></span></label>
-            <p class="fl"><a href="#">全选</a><a href="#" class="del">删除</a></p>
+            <p class="fl"><a href="#">全选</a><a href="javascript:Deletecollects('确定删除这些商品吗','myform')" class="del">删除</a></p>
             <p class="fr"><span>共<small id="sl">0</small>件商品</span><span>合计:&nbsp;<small id="all">￥0.00</small></span><a
                     href="javascript:toorder()" class="count">结算</a></p></div>
     </div>
+    </form>
 </div>
 <script>
     function toorder(){
@@ -95,64 +138,20 @@
     }
 </script>
 <div class="mask"></div>
-<div class="tipDel"><p>确定要删除该商品吗？</p>
-    <p class="clearfix"><a class="fl cer" href="#">确定</a><a class="fr cancel" href="#">取消</a></p></div><!--返回顶部-->
-<div class="gotop"><a href="cart.html">
-    <dl>
-        <dt><img src="img/gt1.png"/></dt>
-        <dd>去购<br/>物车</dd>
-    </dl>
-</a><a href="#" class="dh">
-    <dl>
-        <dt><img src="img/gt2.png"/></dt>
-        <dd>联系<br/>客服</dd>
-    </dl>
-</a><a href="mygxin.html">
-    <dl>
-        <dt><img src="img/gt3.png"/></dt>
-        <dd>个人<br/>中心</dd>
-    </dl>
-</a><a href="#" class="toptop" style="display: none;">
-    <dl>
-        <dt><img src="img/gt4.png"/></dt>
-        <dd>返回<br/>顶部</dd>
-    </dl>
-</a>
-    <p>400-800-8200</p></div><!--footer-->
-<div class="footer">
-    <div class="top">
 
-    </div>
-    <p class="dibu">最家家居&copy;2013-2017公司版权所有 京ICP备080100-44备0000111000号<br/>
-        违法和不良信息举报电话：188-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p></div><!----------------mask------------------->
-<div class="mask"></div><!-------------------mask内容------------------->
-<div class="proDets"><img class="off" src="img/temp/off.jpg"/>
-    <div class="proCon clearfix">
-        <div class="proImg fr"><img class="list" src="img/temp/proDet.jpg"/>
-            <div class="smallImg clearfix"><img src="img/temp/proDet01.jpg" data-src="img/temp/proDet01_big.jpg"><img
-                    src="img/temp/proDet02.jpg" data-src="img/temp/proDet02_big.jpg"><img src="img/temp/proDet03.jpg"
-                                                                                          data-src="img/temp/proDet03_big.jpg"><img
-                    src="img/temp/proDet04.jpg" data-src="img/temp/proDet04_big.jpg"></div>
+
+<div class="footer">
+
+    <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号</p></div><!----------------mask------------------->
+
         </div>
-        <div class="fl">
-            <div class="proIntro change"><p>颜色分类</p>
-                <div class="smallImg clearfix"><p class="fl on"><img src="img/temp/prosmall01.jpg" alt="白瓷花瓶+20支快乐花"
-                                                                     data-src="img/temp/proBig01.jpg"></p>
-                    <p class="fl"><img src="img/temp/prosmall02.jpg" alt="白瓷花瓶+20支兔尾巴草"
-                                       data-src="img/temp/proBig02.jpg"></p>
-                    <p class="fl"><img src="img/temp/prosmall03.jpg" alt="20支快乐花" data-src="img/temp/proBig03.jpg"></p>
-                    <p class="fl"><img src="img/temp/prosmall04.jpg" alt="20支兔尾巴草" data-src="img/temp/proBig04.jpg"></p>
-                </div>
-            </div>
-            <div class="changeBtn clearfix"><a href="#2" class="fl"><p class="buy">确认</p></a><a href="#2" class="fr"><p
-                    class="cart">取消</p></a></div>
-        </div>
-    </div>
-</div>
-<div class="pleaseC"><p>请选择宝贝</p><img class="off" src="img/temp/off.jpg"/></div>
+
+
 
 <script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/pro.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/cart.js" type="text/javascript" charset="utf-8"></script>
+</div>
 </body>
 </html>

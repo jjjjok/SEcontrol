@@ -6,8 +6,64 @@ public class orderinf {
     private int order_id;
     private String wuliu_id;
     private int user_id;
-    private int add_id;
+    private String address;
     private String order_state;
+    private String item_img;
+    private float item_bprice;
+    private String add_name;
+    private String add_phone;
+
+    public String getAdd_phone() {
+        return add_phone;
+    }
+
+    public void setAdd_phone(String add_phone) {
+        this.add_phone = add_phone;
+    }
+
+    public String getSeller_pay() {
+        return seller_pay;
+    }
+
+    public void setSeller_pay(String seller_pay) {
+        this.seller_pay = seller_pay;
+    }
+
+    private String seller_pay;
+
+    public String getItem_name() {
+        return item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+
+    private String item_name;
+
+    public String getAdd_name() {
+        return add_name;
+    }
+
+    public void setAdd_name(String add_name) {
+        this.add_name = add_name;
+    }
+
+    public String getItem_img() {
+        return item_img;
+    }
+
+    public void setItem_img(String item_img) {
+        this.item_img = item_img;
+    }
+
+    public float getItem_bprice() {
+        return item_bprice;
+    }
+
+    public void setItem_bprice(float item_bprice) {
+        this.item_bprice = item_bprice;
+    }
 
     public String getOrder_state() {
         return order_state;
@@ -17,12 +73,12 @@ public class orderinf {
         this.order_state = order_state;
     }
 
-    public int getAdd_id() {
-        return add_id;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdd_id(int add_id) {
-        this.add_id = add_id;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getConfirm_id() {

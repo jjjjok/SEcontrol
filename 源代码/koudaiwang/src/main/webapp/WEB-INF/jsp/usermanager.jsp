@@ -14,26 +14,36 @@
     <title>后台管理</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
 </head>
 <body>
-<div class="topbar-wrap white">
-    <div class="topbar-inner clearfix">
-        <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
-            <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
-            </ul>
-        </div>
-        <div class="top-info-wrap">
-            <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
-            </ul>
-        </div>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
+
+            </li>
+
+        </ul>
+    </nav>
+    <div class="header_2">
+        <ul class="header_2_1">
+            <li class="header_2_1_1">
+                <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
+            </li>
+
+
+        </ul>
+    </div>
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>后台管理</span>
     </div>
 </div>
+
 <div class="container clearfix">
     <div class="sidebar-wrap">
         <div class="sidebar-title">
@@ -45,8 +55,10 @@
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
                         <li><a href="${pageContext.request.contextPath}/usermanager/selectalluser"><i class="icon-font">&#xe008;</i>用户管理</a></li>
-                        <li><a href="${pageContext.request.contextPath}/itemmanager/toadditem"><i class="icon-font">&#xe005;</i>商品管理</a></li>
-                        <li><a href="${pageContext.request.contextPath}/itemmanager/toitemmanager"><i class="icon-font">&#xe006;</i>商品管理</a></li>
+
+                        <li><a href="${pageContext.request.contextPath}/itemmanager/selectallitem"><i class="icon-font">&#xe006;</i>商品管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/itemmanager/itemcheck"><i class="icon-font">&#xe006;</i>商品审核</a></li>
+                        <li><a href="${pageContext.request.contextPath}/itemmanager/ordermanager"><i class="icon-font">&#xe006;</i>订单管理</a></li>
 
                     </ul>
                 </li>
@@ -58,7 +70,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html"></a><span class="crumb-step"></span><span class="crumb-name"></span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
@@ -66,7 +78,7 @@
                     <table class="search-tab">
                         <tr>
 
-                            <th width="70">用户名:</th>
+
                             <td><input class="common-text" placeholder="用户名" name="keywords" value="" id="" type="text"></td>
                             <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                         </tr>
@@ -78,9 +90,9 @@
             <form action="${pageContext.request.contextPath}/usermanager/deleteusers" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="insert.html"><i class="icon-font"></i>新增作品</a>
+                        <a href="insert.html"><i class="icon-font"></i>新增用户</a>
                         <a id="batchDel" href="javascript:DeleteUsers('确定删除这些用户吗','myform')"><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+
                     </div>
                 </div>
                 <div class="result-content">

@@ -12,30 +12,41 @@
     <title>ok</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/proList.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/index.css"/>
 </head>
 <body><!----------------------------------------order------------------>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
 
+            </li>
+
+
+
+                <li><a href="" style="color: red" >你好，${name.user_name}</a></li>
+
+        </ul>
+    </nav>
+    <div class="header_2">
+
+    </div>
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>回调页面</span>
+    </div>
 <div class="order mt cart">
-    <div class="site"><p class="wrapper clearfix"><span class="fl">支付成功</span><img class="top"
-                                                                                   src="img/temp/cartTop03.png"></p>
+    <div class="site"><p class="wrapper clearfix"><span class="fl"></span></p>
     </div>
-    <p class="ok">支付成功！剩余<span>5</span>秒<a href="myorderq.html">返回订单页</a></p></div>
+    <p class="ok">支付成功！<form action="${pageContext.request.contextPath}/item/updatenum" method="post" >
 
-<div class="footer">
-    <div class="top">
-        <div class="wrapper">
-            <div class="clearfix"><a href="#2" class="fl"><img src="img/foot1.png"/></a><span class="fl">7天无理由退货</span>
-            </div>
-            <div class="clearfix"><a href="#2" class="fl"><img src="img/foot2.png"/></a><span class="fl">15天免费换货</span>
-            </div>
-            <div class="clearfix"><a href="#2" class="fl"><img src="img/foot3.png"/></a><span class="fl">满599包邮</span>
-            </div>
-            <div class="clearfix"><a href="#2" class="fl"><img src="img/foot4.png"/></a><span class="fl">手机特色服务</span>
-            </div>
-        </div>
-    </div>
-    <p class="dibu">最家家居&copy;2013-2017公司版权所有 京ICP备080100-44备0000111000号<br/>
-        违法和不良信息举报电话：188-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p></div>
+    <input type="submit" name="" value="返回订单">
+</form></div>
+
+
 <script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/pro.js" type="text/javascript" charset="utf-8"></script>

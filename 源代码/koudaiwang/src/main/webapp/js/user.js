@@ -101,10 +101,8 @@ $(function () {
         $(".mask").show();
         $(".adddz").show()
     });
-    $("#dizhi").hover(function () {
-        var a = "";
-        a = '<p class="addp"><a href="#"  id="readd">修改</a><a href="#" id="deladd">删除</a></p>';
-        $(this).append(a);
+    $("#dizhi")(function () {
+
         $("#readd").click(function () {
             $(".mask").show();
             $(".readd").show()

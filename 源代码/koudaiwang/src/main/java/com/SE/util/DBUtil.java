@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtil {
-    private static final String jdbcUrl="jdbc:mysql://localhost:3306/koudaiwang?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
+    private static final String jdbcUrl="jdbc:mysql://localhost:3306/koudaiwang?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
     private static final String dbUser="root";
     private static final String dbPwd="";
     static{

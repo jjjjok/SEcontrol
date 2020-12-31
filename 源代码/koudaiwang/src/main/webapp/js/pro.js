@@ -10,7 +10,7 @@ $(function () {
     });
     $(".proList li").on("mouseenter", function () {
         var c = "";
-        c = '<p class="quick">快速浏览</p>';
+        c = '';
         $(this).css("border", "1px solid #000").append(c);
         $(".quick").on("click", function () {
             $(".mask").show();

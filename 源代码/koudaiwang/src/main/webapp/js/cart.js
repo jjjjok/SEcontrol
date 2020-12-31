@@ -120,47 +120,7 @@ $(function () {
             $(".goCart span").text(c + d)
         }
     });
-    $(".del").click(function () {
-        if ($(this).parent().parent().hasClass("th")) {
-            $(".mask").show();
-            $(".tipDel").show();
 
-            var url="collectdelete?itemid="+$(this).attr("datasrc")
-            $.get(url,function(data){});
-
-            index = $(this).parents(".th").index() - 1;
-            $(".cer").click(function () {
-                $(".mask").hide();
-                $(".tipDel").hide();
-                $(".th").eq(index).remove();
-                $(".cer").off("click");
-                if ($(".th").length == 0) {
-                    $(".table .goOn").show()
-                }
-            })
-        } else {
-            if ($(".th input[type='checkbox']:checked").length == 0) {
-                $(".mask").show();
-                $(".pleaseC").show()
-            } else {
-                $(".mask").show();
-                $(".tipDel").show();
-                $(".cer").click(function () {
-                    $(".th input[type='checkbox']:checked").each(function (c) {
-                        index = $(this).parents(".th").index() - 1;
-                        $(".th").eq(index).remove();
-                        if ($(".th").length == 0) {
-                            $(".table .goOn").show()
-                        }
-                    });
-                    $(".mask").hide();
-                    $(".tipDel").hide();
-                    b();
-                    a()
-                })
-            }
-        }
-    });
     $(".cancel").click(function () {
         $(".mask").hide();
         $(".tipDel").hide()

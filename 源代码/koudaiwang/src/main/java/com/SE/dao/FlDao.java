@@ -42,6 +42,13 @@ public class FlDao {
         return DBUtil.exectuIUD(sql,params);
     }
 
-
+    //分类关联删除
+    public static int linkDelete(int id){
+        String sql="delete from link where item_id=?";
+        Object[] params ={
+                id
+        };
+        return DBUtil.exectuIUD(sql,params);
+    }
 
 }

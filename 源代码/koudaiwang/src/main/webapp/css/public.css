@@ -82,6 +82,9 @@ article, aside, figcaption, figure, footer, header, hgroup, nav, section, summar
 .fl {
     float: left;
 }
+.fl1 {
+    float: right;
+}
 
 .fr {
     float: right;

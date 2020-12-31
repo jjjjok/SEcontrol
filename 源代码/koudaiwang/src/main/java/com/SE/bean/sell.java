@@ -7,6 +7,71 @@ public class sell {
     private int item_id;
     private int user_id;
     private Date sell_date;
+    private int sell_state;
+    private String item_name;
+    private String item_inf;
+
+    public String getItem_inf() {
+        return item_inf;
+    }
+
+    public void setItem_inf(String item_inf) {
+        this.item_inf = item_inf;
+    }
+
+    public int getSell_state() {
+        return sell_state;
+    }
+
+    public void setSell_state(int sell_state) {
+        this.sell_state = sell_state;
+    }
+
+    public String getItem_name() {
+        return item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+
+    public String getItem_img() {
+        return item_img;
+    }
+
+    public void setItem_img(String item_img) {
+        this.item_img = item_img;
+    }
+
+    public float getItem_aprice() {
+        return item_aprice;
+    }
+
+    public void setItem_aprice(float item_aprice) {
+        this.item_aprice = item_aprice;
+    }
+
+    public float getItem_bprice() {
+        return item_bprice;
+    }
+
+    public void setItem_bprice(float item_bprice) {
+        this.item_bprice = item_bprice;
+    }
+
+    public int getItem_num() {
+        return item_num;
+    }
+
+    public void setItem_num(int item_num) {
+        this.item_num = item_num;
+    }
+
+    private String item_img;
+    private float item_aprice;
+    private float item_bprice;
+    private int item_num;
+
 
     public int getSell_id() {
         return sell_id;

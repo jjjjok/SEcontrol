@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+	width:100%;
+	height:40px;
+	background-color:#f7f7f7;
+}
+.header_1{
+    float: left;
+    margin-left:40px;
+    float: left;
+    width: 340px;
+    height: 100%;
+
+}
+/*页眉导航显现的整体*/
+.header_1 ul{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.header_1 ul li{  /*去掉以及菜单的点，横向浮动*/
+    float: left;
+    list-style:none;
+}
+/*页眉单个菜单的具体属性*/
+.header_1 ul li a:link, .header_1 ul li a:visited{
+    display: block;    /*以块元素呈现*/
+    width:72px;
+    height: 100%;
+    text-align:center;
+    text-decoration: none;
+    line-height: 35px;
+    font-size: 12px;
+    background-color: #f7f7f7;
+    color: #593b42;
+}
+.header_1 ul li a:hover,.header_1 ul li a:active{
+    background-color:white ;
+}
+.header_1 ul li ul{
+    display: none;   /* 隐藏二级菜单列表*/
+    position: absolute;   /*二级菜单的位置固定*/
+}
+.header_1 ul li :hover ul{
+    display: block;
+    /*width: auto;     !*消除二级菜单的滚动条*!*/
+}
+/*导航下面的滚动条*/
+.header_1 ul li ul li{
+    float: none;     /*消除二级菜单的浮动*/
+    margin-left: -5px;
+    background-color: white;
+    width: 72px;
+}
+/*页眉导航第二大块*/
+.header_2{
+    position: relative;
+    margin-right: 16px;
+    float: right;
+    width: 610px;
+    height: 100%;
+}
+.header_2 ul{
+    margin: 0 auto;
+    float: right;
+    width: 100%;
+    height:100%;
+}
+.header_2 ul li{
+    float: right;
+    list-style:none;
+}
+.header_2 ul li a:link, .header_2 ul li a:visited{
+    display: block;
+    width: 77px;
+    height: 100%;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #593b42;
+}
+.header_2 ul li a:hover,.header_2 ul li a:active{
+    background-color: white;
+}
+.header_2 ul li ul{
+    display: none;
+    position: absolute;
+}
+.header_2 ul li:hover ul{
+    display: block;
+}
+
+.header_2_1_1 i{
+    float: right;
+    text-indent: 1px;
+    margin-left: 67px;
+    margin-top:-22px;
+	text-decoration:none;
+}
+.header_2_1_2 i{
+    float: right;
+    text-indent: 1px;
+    margin-left: 60px;
+    margin-top:-22px;
+	text-decoration:none;
+}
+.header_2_1_3 i{
+    float: right;
+    text-indent: 1px;
+    margin-left: 60px;
+    margin-top:-22px;
+	text-decoration:none;
+}
+.header_2_1_4 i{
+    float: right;
+    text-indent: 19px;
+    margin-left: 67px;
+    margin-top:-22px;
+	text-decoration:none;
+}
+.logo_1{
+	margin-left:209px;
+	float:left;
+}
+.logo{
+    float: left;
+    margin-left: 0px;
+    width: 100%;
+    height: 112px;
+	background-color:#ADE3FA;
+    /*background-color: #d3fff5;*/
+    position: relative;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.reg {
+    width: 100%;
+    height: 100%;
+    background: url("../img/temp/20.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+
+.login {
+    width: 100%;
+    height: 100%;
+    background: url("../img/temp/19.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+
+.login img, .reg img {
+    width: auto;
+}
+
+.login form, .reg form {
+    position: fixed;
+    top: 15%;
+    right: 140px;
+    padding: 20px 0;
+    text-align: center;
+    z-index: 10;
+    background: #fff;
+}
+
+.msg-warn {
+    position: relative;
+    background: #fef4e5;
+    color: #666;
+    display: inline-block;
+    border: 1px solid #ADE3FA;
+    padding: 3px 31px 3px 31px;
+    line-height: 15px;
+    height: auto;
+}
+
+.login form {
+    top: 18%;
+    border: 1px solid #dbdbdb;
+    width: 440px;
+    height: 310px;
+}
+
+.reg form {
+    width: 480px;
+    height: 490px;
+    background: #fff;
+}
+
+.reg form h1, .login form h1 {
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 20px;
+}
+
+.reg form p, .login form p {
+    margin-top: 15px;
+}
+
+.reg form a.off, .login form a.off {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.reg form input, .login form input {
+    width: 270px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.reg form input[type="text"], .login form input[type="text"] {
+    border: 1px solid #dbdbdb;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.reg input[type="submit"], .login input[type="submit"] {
+    width: 280px;
+    background: #ADE3FA;
+    font-size: 20px;
+    border: none;
+    color: #fff;
+}
+
+div.reg form input.code {
+    width: 150px;
+}
+
+div.reg form p.txtL {
+    text-align: left;
+}
+
+div.reg form p.txtL img {
+    width: 97px;
+    height: 37px;
+    vertical-align: middle;
+}
+
+div.reg form p.txtL a {
+    color: #ADE3FA;
+}
+
+.reg form p.txt, .login form p.txt {
+    width: 280px;
+    margin: 10px auto 0;
+    text-align: right;
+}
+
+.reg p.txt a, .login p.txt a {
+    color: #666;
+    text-decoration: underline;
+}
+
+div.login form p.txt a {
+    margin-left: 20px;
+    cursor: pointer;
+}
+.dibu{
+	background-color:black;
+	text-align:center;
+	color:white;
+}

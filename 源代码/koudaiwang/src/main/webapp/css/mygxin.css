@@ -247,6 +247,7 @@ body {
     height: 40px;
     line-height: 40px;
     text-indent: 5px;
+
 }
 
 .adddz form input.on, .readd form input.on {
@@ -282,15 +283,20 @@ body {
 
 .adddz form div.bc input, .readd form div.bc input {
     display: inline-block;
-    width: 120px;
+    width: 60px;
     height: 36px;
     line-height: 36px;
     text-align: center;
     background: #fff;
     border: 1px solid #e6e6e6;
+    margin-top: 200px;
+    margin-right: 200px;
+
 }
 
 .adddz form div.bc input:nth-child(1), .readd form div.bc input:nth-child(1) {
     background: #A10000;
     color: #FFFFFF;
+    margin-top: 200px;
+    margin-right: 300px;
 }

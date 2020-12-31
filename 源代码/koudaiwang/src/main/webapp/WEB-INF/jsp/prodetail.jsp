@@ -13,9 +13,43 @@
     <title>详情页</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/proList.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
 </head>
 <body><!------------------------------head------------------------------>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
 
+            </li>
+
+        </ul>
+    </nav>
+    <div class="header_2">
+        <ul class="header_2_1">
+            <li class="header_2_1_1">
+                <a href="${pageContext.request.contextPath}/user/myorder">我的口袋</a>
+            </li>
+            <li class="header_2_1_2">
+                <a href="${pageContext.request.contextPath}/item/collectshow">购物车</a>
+            </li>
+            <li class="header_2_1_3">
+                <a href="${pageContext.request.contextPath}/item/tousersell" >我要出售</a>
+            </li>
+
+            <li class="header_2_1_5">
+                <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>商品详情</span>
+    </div>
+</div>
 <div class="detCon">
     <div class="proDet wrapper">
         <div class="proCon clearfix">
@@ -27,6 +61,7 @@
                    <p><span>购入价：${i.item_aprice}</span><p><span>出售价：${i.item_bprice}</span></p>
                 </div>
                 <div class="proIntro"><p></p>
+                    <div class="title"><h4>${i.item_inf}</h4></div>
 
                     <p>库存<span>${i.item_num}</span>件</p>
                     <div class="num clearfix">
@@ -52,19 +87,8 @@
 
 
 
-<div class="introMsg wrapper clearfix">
-    <div class="msgL fl">
-        <div class="msgTit clearfix"><a class="on">商品详情</a><a>所有评价</a></div>
 
-    </div>
 
-    </div>
-<div class="gotop"><a href="${pageContext.request.contextPath}/item/collectshow">
-    <dl class="goCart">
-        <dt><img src="${pageContext.request.contextPath}/img/gt1.png"/></dt>
-        <dd>去购<br/>物车</dd>
-        <span>1</span></dl>
-</a></div>
 
 <div class="msk"></div><!--footer-->
 <div class="footer">

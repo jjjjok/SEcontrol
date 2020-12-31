@@ -30,14 +30,68 @@ function CheckItem(obj) {
             }
             break;
         case "userphone":
+
             if (obj.value == "") {
                 msgBox.html('手机号不能为空');
+                msgBox.addClass('empty');
+                flag = false;
+            }else if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(obj.value))){
+                msgBox.html('手机号必须为11位数字');
+                msgBox.addClass('empty');
+                flag = false;
+            }
+
+            else{
+                flag = true;
+            }
+            break;
+        case "pay":
+            if (obj.value == "") {
+                msgBox.html('收款账户不能为空');
                 msgBox.addClass('empty');
                 flag = false;
             }else{
                 flag = true;
             }
             break;
+        case "address":
+            if (obj.value == "") {
+                msgBox.html('收货地址不能为空');
+                msgBox.addClass('empty');
+                flag = false;
+            }else{
+                flag = true;
+            }
+            break;
+        case "name":
+            if (obj.value == "") {
+                msgBox.html('名称不能为空');
+                msgBox.addClass('empty');
+                flag = false;
+            }else{
+                flag = true;
+            }
+            break;
+
+        case "oid":
+            if (obj.value == "") {
+                msgBox.html('订单号不能为空');
+                msgBox.addClass('empty');
+                flag = false;
+            }else{
+                flag = true;
+            }
+            break;
+        case "sendid":
+            if (obj.value == "") {
+                msgBox.html('物流编号不能为空');
+                msgBox.addClass('empty');
+                flag = false;
+            }else{
+                flag = true;
+            }
+            break;
+
         case "userpwd":
             if (obj.value == "") {
                 msgBox.html('密码不能为空');

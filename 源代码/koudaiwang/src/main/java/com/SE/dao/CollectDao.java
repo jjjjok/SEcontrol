@@ -128,7 +128,14 @@ public class CollectDao {
         return DBUtil.exectuIUD(sql,params);
     }
 
-
+    //collectitem删除
+    public static int collectItemDelete(int uid,int itemid){
+        String sql="delete from collectitem where user_id=? and item_id=?";
+        Object[] params ={
+                uid,itemid
+        };
+        return DBUtil.exectuIUD(sql,params);
+    }
 
 
 
@@ -174,4 +181,32 @@ public class CollectDao {
             DBUtil.close(rs,ps,conn);
         }return i;
     }
+
+    //根据物品id获取卖家收款账户
+    public static String selectPayById(int itemid){
+        String pay="";
+        ResultSet rs =null;
+        Connection conn= DBUtil.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            String sql="select user_pay from userinf where user_id=(select user_id from sell where item_id=?)";
+            ps=conn.prepareStatement(sql);
+
+            ps.setInt(1,itemid);
+            rs=ps.executeQuery();
+            while(rs.next()){
+
+               pay=rs.getString(1);
+
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            DBUtil.close(rs,ps,conn);
+        }return pay;
+    }
+
+
 }

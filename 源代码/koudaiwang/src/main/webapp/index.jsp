@@ -1,76 +1,117 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: yy
+  Date: 2020/12/27
+  Time: 13:20
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!--输出,条件,迭代标签库-->
-
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" +
-            request.getServerPort() + path + "/";
-%>
+<html>
 <script>
     function f() {
         var url = "${pageContext.request.contextPath}/item/preselectallitem"
         $.post(url)
     }
     $(document).ready(f())
+
+    function search(){
+        location.href="${pageContext.request.contextPath}/item/searchitem"
+    }
+
 </script>
-<base href="<%=basePath%>">
 <head lang="en">
     <meta charset="utf-8"/>
-    <title>主页</title>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/public.css"/>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/proList.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/index.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
 </head>
 <body><!------------------------------head------------------------------>
-<div class="head">
-    <div class="wrapper clearfix">
-        <div class="clearfix" id="top"><h1 class="fl"><a href="index.html"></a></h1>
+<header class = "container">
+    <nav class="header_1">
+        <ul style="z-index: 9999; position: relative">
+            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
+
+            </li>
+
+
             <c:if test="${isLogin !=1}">
-            <div class="fr clearfix" id="top1"><p class="fl"><a href="${pageContext.request.contextPath}/user/tologin" id="login">登录</a><a href="${pageContext.request.contextPath}/user/toregister" id="reg">注册</a><a href="${pageContext.request.contextPath}/usermanager/tomanager" id="man">后台</a>
-
-
-                </c:if>
-                <c:if test="${isLogin ==1}">
-                <div class="fr clearfix" id="top1"><p class="fl"><a href="${pageContext.request.contextPath}/user/tologin" id="login">你好，${name.user_name}</a><a href="${pageContext.request.contextPath}/user/toregister" id="reg">注册</a><a href="${pageContext.request.contextPath}/usermanager/tomanager" id="man">后台</a>
-                </c:if>
-            </p>
-                <form action="#" method="get" class="fl"><input type="button"/></form>
-                <div class="btn fl clearfix"><a href="mygxin.html"><img src="img/grzx.png"/></a><a href="#" class="er1"><img
-                        src="img/ewm.png"/></a><a href="cart.html"><img src="img/gwc.png"/></a>
-                    <p><a href="#"><img src="img/smewm.png"/></a></p></div>
-            </div>
-        </div>
-        <ul class="clearfix" id="bott">
-            <li><a href="${pageContext.request.contextPath}/item/indexselect">首页</a></li>
-
-            <li><a href="${pageContext.request.contextPath}/item/selectflitem?id=1">宿舍用品</a>
-            <li><a href="${pageContext.request.contextPath}/item/selectflitem?id=2">日常用具</a>
-            <li><a href="${pageContext.request.contextPath}/item/selectflitem?id=3">学习用品</a>
-            <li><a href="${pageContext.request.contextPath}/item/selectflitem?id=4">零食</a>
+                <li><a href="${pageContext.request.contextPath}/user/tologin"style="color: red" >叮，请登录…</a></li>
+            </c:if>
+            <c:if test="${isLogin ==1}">
+                <li><a href="" style="color: red" >你好，${name.user_name}</a></li>
+            </c:if>
+        </ul>
+    </nav>
+    <div class="header_2">
+        <ul class="header_2_1">
+            <li class="header_2_1_1">
+                <a href="${pageContext.request.contextPath}/user/myorder">我的口袋</a>
+            </li>
+            <li class="header_2_1_2">
+                <a href="${pageContext.request.contextPath}/item/collectshow">购物车</a>
+            </li>
+            <li class="header_2_1_3">
+                <a href="${pageContext.request.contextPath}/item/tousersell" >我要出售</a>
             </li>
 
         </ul>
     </div>
-</div><!-------------------------banner--------------------------->
+</header>
+<div class="logo">
+    <div  class = logo_1>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
+        <span style = font-size:50px>口袋网</span>
+        <span>首页</span>
+    </div>
+    <div class="all_logo_2_2">      <!--js搜索框的实现-->
+        <div id="wrap">
+            <div style="overflow: hidden;">
+                <i class="fas fa-search"></i>  <!--引入放大镜-->
+                <input type="text" id="input" name="text" placeholder="台灯" />
+                <a href="" id="a"> 搜索</a>
+                <script type="text/javascript">
+                    input.onkeyup=function(){
+                        a.setAttribute("href","${pageContext.request.contextPath}/item/searchitem?text="+input.value);
+                    }
+                </script>
 
+            </div>
+            <ul id="list"></ul>
+        </div>
+    </div>
+</div>
+<div id ="nav">
+    <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
 
+    <a href="${pageContext.request.contextPath}/item/selectflitem?id=1">宿舍用品</a>
 
-<div class="people">
-    <div class="wrapper">
+    <a href="${pageContext.request.contextPath}/item/selectflitem?id=2">二手书本</a>
 
-        <div class="pList clearfix tran">
-            <c:forEach var="i" items="${itemlist}">
-            <a href="${pageContext.request.contextPath}/item/detail?id=${i.item_id}">
+    <a href="${pageContext.request.contextPath}/item/selectflitem?id=3">电子产品</a>
 
+    <a href="${pageContext.request.contextPath}/item/selectflitem?id=4">生活用品</a>
+
+    <a href="${pageContext.request.contextPath}/item/selectflitem?id=5">零食小吃</a>
+</div>
+
+<ul class="proList wrapper clearfix">
+
+    <c:forEach var="i" items="${itemlist}">
+        <li>  <a href="${pageContext.request.contextPath}/item/detail?id=${i.item_id}">
             <dl>
-                <dt><span class="abl"></span><img src="koudaiwang/../imgs/${i.item_img}"/><span class="abr"></span></dt>
+                <dt><span class="abl"></span><img src="${pageContext.request.contextPath}/imgs/${i.item_img}" width="219px" height="219px" /><span class="abr"></span></dt>
                 <dd>${i.item_name}</dd>
                 <dd><span>出售价：${i.item_bprice}</span></dd>
             </dl>
-            </c:forEach>
-        </div>
-    </div>
-</div><!--返回顶部-->
+        </a></li>
+
+    </c:forEach>
+
+
+</ul><!----------------mask------------------->
 <div class="list-page">
     共${itemsum}条记录，当前${itemcpage}/${itempage}页
     <a href="${pageContext.request.contextPath}/item/preselectallitem?cp=1">首页</a>
@@ -80,25 +121,11 @@
 
 </div>
 
-    <p>400-800-8200</p></div><!-------------------login--------------------------><!--footer-->
-<div class="footer">
 
-    <p class="dibu">哆啦A梦的口袋网&copy;2020-2022公司版权所有 京ICP备080100-44备0000111000号<br/>
-        违法和不良信息举报电话：400-800-8200，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p></div>
-<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/nav.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jquery.flexslider-min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">$(function () {
-    $('#home_slider').flexslider({
-        animation: 'slide',
-        controlNav: true,
-        directionNav: true,
-        animationLoop: true,
-        slideshow: true,
-        slideshowSpeed: 2000,
-        useCSS: false
-    });
-});</script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/js/nav.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/js/pro.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/js/cart.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
