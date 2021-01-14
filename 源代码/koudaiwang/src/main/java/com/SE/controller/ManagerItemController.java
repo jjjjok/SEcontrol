@@ -1,15 +1,13 @@
 package com.SE.controller;
 
-import com.SE.bean.fl;
-import com.SE.bean.item;
-import com.SE.bean.orderinf;
-import com.SE.bean.userinf;
+import com.SE.bean.*;
 import com.SE.dao.*;
 import com.SE.port.MimiPaySample;
 
 import com.SE.port.PayParams;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -34,6 +32,21 @@ public class ManagerItemController {
     @RequestMapping(value = "/toitemmanager")
     public String toItemManager(){
         return "itemmanager";
+    }
+@RequestMapping("/toappealresult")
+public String toAppealResult(@RequestParam("id")String oid,@RequestParam("cpage")String cpage,HttpServletResponse resp, HttpServletRequest req)throws ServletException,IOException{
+    req.setAttribute("oid", oid);
+    req.setAttribute("cpage", cpage);
+    return "appealresult";
+}
+    @RequestMapping("/appealresult")
+    public void appealResult(@RequestParam("id")String oid,@RequestParam("content")String result1,@RequestParam("cpage")String cpage,HttpServletResponse resp, HttpServletRequest req)throws ServletException,IOException{
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=UTF-8");
+        String result = new String(result1.getBytes("ISO-8859-1"),"UTF-8");
+        AppealDao.appealUpdate(result,Integer.parseInt(oid));
+        resp.sendRedirect("ordermanager?cp="+req.getParameter("cpage"));
+
     }
 
 
@@ -140,7 +153,16 @@ public class ManagerItemController {
         resp.sendRedirect("ordermanager?cp="+req.getParameter("cpage"));
 
     }
+    //管理员退款确认
 
+    @RequestMapping(value = "/refundchecked")
+    public void refundChecked(HttpServletResponse resp,HttpServletRequest req)throws ServletException,IOException{
+        String id = req.getParameter("id");
+
+        OrderDao.updateOrderRefundMan(Integer.parseInt(id));
+        resp.sendRedirect("ordermanager?cp="+req.getParameter("cpage"));
+
+    }
 
 
     //订单管理
@@ -148,7 +170,7 @@ public class ManagerItemController {
     public void orderManager(HttpServletResponse resp,HttpServletRequest req)throws ServletException,IOException{
 
         int cpage=1;//当前页
-        int count=5;//每页显示数目
+        int count=10;//每页显示数目
         String cp=req.getParameter("cp");
         if(cp!=null){
             cpage=Integer.parseInt(cp);
@@ -163,10 +185,44 @@ public class ManagerItemController {
         req.setAttribute("ordercpage",cpage);
         req.getRequestDispatcher("/WEB-INF/jsp/ordermanager.jsp").forward(req,resp);
 
+    }
+
+    //显示申诉详情
+    @RequestMapping(value = "/appealdetail")
+    public void appealDetail(HttpServletResponse resp,HttpServletRequest req)throws ServletException,IOException{
 
 
+            String id=req.getParameter("id");
+            appeal r=AppealDao.getAppealDetailById(Integer.parseInt(id));
+            int uid=r.getUser_id();
+            userinf user=UserDao.selectById(uid);
+            String username = user.getUser_name();
+            String userphone=user.getUser_phone();
+            req.setAttribute("appeal", r);
+            req.setAttribute("username", username);
+            req.setAttribute("userphone", userphone);
+
+            req.getRequestDispatcher("/WEB-INF/jsp/appealdetail.jsp").forward(req, resp);
 
     }
+    //显示退款详情
+    @RequestMapping(value = "/refunddetail")
+    public void refundDetailMan(HttpServletResponse resp,HttpServletRequest req)throws ServletException,IOException{
+
+            String id=req.getParameter("id");
+            refund r=RefundDao.getRefundDetailById(Integer.parseInt(id));
+        int uid=r.getUser_id();
+        userinf user=UserDao.selectById(uid);
+        String username = user.getUser_name();
+        String userphone=user.getUser_phone();
+            req.setAttribute("refund", r);
+            req.setAttribute("username", username);
+            req.setAttribute("userphone", userphone);
+
+            req.getRequestDispatcher("/WEB-INF/jsp/refunddetailmanager.jsp").forward(req, resp);
+        }
+
+
 
 
 }

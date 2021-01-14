@@ -27,7 +27,7 @@ public class PreItemController {
         return "prodetail";
     }
     @RequestMapping(value = "/detail")
-    public void Detail(HttpServletResponse resp, HttpServletRequest req)throws ServletException, IOException{
+    public void detail(HttpServletResponse resp, HttpServletRequest req)throws ServletException, IOException{
         String id1=req.getParameter("id");
         int id=Integer.parseInt(id1);
         item i=ItemDao.selectItemById(id);
@@ -100,7 +100,7 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             PayParams pp = new PayParams();
             pp.setPrice(Float.parseFloat(sum));
             pp.setType(1);
-            pp.setOutTradeNo("kdww" + confirm_id);
+            pp.setOutTradeNo("nky" + confirm_id);
             pp.setOutUserNo(String.valueOf(uid));
 
             pp.setNotifyUrl("http://121.196.159.188:8080/kdw/item/topayok");
@@ -119,8 +119,6 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
                     str+=OrderDao.selectIIdByOid(i)+",";
                 }
             }
-
-
 
             PrintWriter out = response.getWriter();
             out.write("<script>alert('请选择一个收货地址！');location.href='collectshow'</script>");
@@ -150,18 +148,16 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             int num= ItemDao.selectNumById(item_id);
             int count=num-ordernum;
             if(count>0){
-            ItemDao.updateItemNum(item_id,count);}
+
+            ItemDao.updateItemNum(item_id,count);
+            ItemDao.updateCIItemNum(item_id,num);
+            }
             else{
 
-                FlDao.linkDelete(item_id);
-                SellDao.itemDelete(item_id);
-                ItemDao.itemDelete(item_id);
-
+                ItemDao.updateAfterBuy(item_id);
             }
             OrderDao.addressOrderAdd(i,addid,a.getUser_name(),a.getUser_phone());
-
         }
-
         resp.sendRedirect("/kdw/user/myorder");
     }
 
@@ -171,10 +167,22 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
     @RequestMapping(value = "/selectflitem")
     public void selectFlItem(HttpServletResponse resp,HttpServletRequest req) throws ServletException,IOException{
 
+        int cpage=1;//当前页
+        int count=8;//每页显示数目
+        String cp=req.getParameter("cp");
+        if(cp!=null){
+            cpage=Integer.parseInt(cp);
+        }
         String id1=req.getParameter("id");
         int id=Integer.parseInt(id1);
-        ArrayList<item> list= ItemDao.selectItemByFlId(id);
+        int result[]= PageDao.itemByFlPage(count,id);
+
+        ArrayList<item> list= ItemDao.selectItemByFlId(cpage,count,id);
+        req.setAttribute("id",id1);
         req.setAttribute("list",list);
+        req.setAttribute("itemsum",result[0]);
+        req.setAttribute("itempage",result[1]);
+        req.setAttribute("itemcpage",cpage);
         req.getRequestDispatcher("/WEB-INF/jsp/productlist.jsp").forward(req,resp);
     }
 
@@ -227,11 +235,18 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             }
 
             int flag=CollectDao.selectByUAI(uid,i.getItem_id());
+            int nownum=ItemDao.selectNumById(i.getItem_id());
            if(flag>0){
                int ccount=CollectDao.selectCollectNumByid(uid,i.getItem_id());
                int num=Integer.parseInt(count)+ccount;
-               CollectDao.updateNum(num,uid,i.getItem_id());
-               CollectDao.updateCINum(num,uid,i.getItem_id());
+
+               if(nownum>num) {
+                   CollectDao.updateNum(num, uid, i.getItem_id());
+                   CollectDao.updateCINum(num, uid, i.getItem_id());
+               }else{
+                   CollectDao.updateNum(nownum, uid, i.getItem_id());
+                   CollectDao.updateCINum(nownum, uid, i.getItem_id());
+               }
            }else {
                collect c=new collect();
                c.setUser_id(uid);
@@ -247,6 +262,7 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
                l.setItem_bprice(i.getItem_bprice());
                l.setItem_img(i.getItem_img());
                l.setCollect_count(Integer.parseInt(count));
+               l.setItem_num(nownum);
                l.setUser_id(uid);
                CollectDao.collectItemInsert(l);
 
@@ -254,6 +270,7 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             if (url.equals("1")){
                 resp.sendRedirect("collectshow");
             }else if(url.equals("2")){
+
                 resp.sendRedirect("detail?id="+item_id);
             }
 
@@ -270,22 +287,30 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
     //购物车页面
     @RequestMapping(value = "/collectshow")
     public void collectShow(HttpServletResponse resp,HttpServletRequest req) throws ServletException,IOException{
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=UTF-8");
         HttpSession session=req.getSession();
         String islogin=(String)session.getAttribute("isLogin");
         userinf user=(userinf)session.getAttribute("name");
         if(user!=null&&islogin.equals("1")) {
             int uid = user.getUser_id();
             ArrayList<collectitem> list = CollectDao.selectCollectByUId(uid);
+            int count=CollectDao.selectCountByUId(uid);
 
 
 
             req.setAttribute("list",list);
-
+            req.setAttribute("count",count);
             req.getRequestDispatcher("/WEB-INF/jsp/collect.jsp").forward(req,resp);
 
         }
         else{
-            resp.sendRedirect("/kdw/user/tologin");
+            PrintWriter out = resp.getWriter();
+            out.write("<script>");
+            out.write("alert('需要登录，即将前往登录');");
+            out.write("location.href='/kdw/user/tologin'");
+            out.write("</script>");
+            out.close();
         }
     }
     //购物车数量加减
@@ -301,10 +326,20 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
         if(itemid!=null){
             i=ItemDao.selectItemById(Integer.parseInt(itemid));
         }
+        int nownum=ItemDao.selectNumById(i.getItem_id());
+        if(Integer.parseInt(count)>nownum){
+            PrintWriter out = resp.getWriter();
+            out.write("<script>");
+            out.write("alert('超过库存数量！');");
+            out.write("location.href='/kdw/item/collectshow'");
+            out.write("</script>");
+            out.close();
 
-        CollectDao.updateNum(Integer.parseInt(count),uid,i.getItem_id());
+        }else {
 
-        CollectDao.updateCINum(Integer.parseInt(count),uid,i.getItem_id());
+            CollectDao.updateNum(Integer.parseInt(count), uid, i.getItem_id());
+            CollectDao.updateCINum(Integer.parseInt(count), uid, i.getItem_id());
+        }
 
     }
     //购物车删除
@@ -373,7 +408,10 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             float bprice=p.getItem_bprice();
             String item_name=p.getItem_name();
             String seller_pay=CollectDao.selectPayById(Integer.parseInt(ids[i]));
-            int v=OrderDao.orderAdd(confirmid,uid,p.getItem_id(),p.getCollect_count(),img,bprice,item_name,seller_pay);
+            String seller_name=CollectDao.selectSellNameById(Integer.parseInt(ids[i]));
+            String buyer_pay=user.getUser_pay();
+
+            int v=OrderDao.orderAdd(confirmid,uid,p.getItem_id(),p.getCollect_count(),img,bprice,item_name,seller_pay,buyer_pay,seller_name);
             float price=p.getCollect_count()*p.getItem_bprice();
             sum+=price;
             list.add(p);

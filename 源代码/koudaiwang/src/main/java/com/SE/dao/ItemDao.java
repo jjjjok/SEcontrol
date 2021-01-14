@@ -37,7 +37,7 @@ public class ItemDao {
     }
 
     public static int itemInsert(item i){
-        String sql="insert into item(item_name,item_aprice,item_bprice,item_inf,item_num,item_img,item_check) values(?,?,?,?,?,?,1)";
+        String sql="insert into item(item_name,item_aprice,item_bprice,item_inf,item_num,item_img,item_check) values(?,?,?,?,?,?,0)";
         Object[] params ={
                 i.getItem_name(),i.getItem_aprice(),i.getItem_bprice(),i.getItem_inf(),i.getItem_num(),i.getItem_img()
         };
@@ -64,6 +64,8 @@ public class ItemDao {
         }
         return count;
     }
+
+
 //后台显示全部物品并分页
     public static ArrayList<item> selectAllItem(int cpage,int count){
         ArrayList<item> list = new ArrayList<item>();
@@ -134,7 +136,7 @@ public class ItemDao {
         PreparedStatement ps = null;
 
         try {
-            String sql="select confirm_id,order_date,order_state,item_id,item_img,item_bprice,address,add_name,item_name,order_num,seller_pay,user_id,order_id from orderinf limit ?,?";
+            String sql="select confirm_id,order_date,order_state,item_id,item_img,item_bprice,address,add_name,item_name,order_num,seller_pay,user_id,order_id from orderinf where order_state is not null limit ?,?";
             ps=conn.prepareStatement(sql);
             ps.setInt(1,(cpage-1)*count);
             ps.setInt(2,count);
@@ -166,16 +168,18 @@ public class ItemDao {
 
 
     //前台根据分类id显示物品
-    public static ArrayList<item> selectItemByFlId(int id){
+    public static ArrayList<item> selectItemByFlId(int cpage,int count,int id){
         ArrayList<item> list = new ArrayList<item>();
         ResultSet rs =null;
         Connection conn= DBUtil.getConnection();
         PreparedStatement ps = null;
 
         try {
-            String sql="select item_name,item_aprice,item_bprice,item_img,item_id from item where item_id in(select item_id from link where fl_id=?) and item_check=1";
+            String sql="select item_name,item_aprice,item_bprice,item_img,item_id from item where item_id in(select item_id from link where fl_id=?) and item_check=1 limit ?,?";
             ps=conn.prepareStatement(sql);
             ps.setInt(1,id);
+            ps.setInt(2,(cpage-1)*count);
+            ps.setInt(3,count);
             rs=ps.executeQuery();
             while(rs.next()){
                 item i=new item();
@@ -281,6 +285,15 @@ public class ItemDao {
     //用户支付成功后，更新物品数量
     public static int updateItemNum(int item_id,int num){
         String sql="update item set item_num=? where item_id=?";
+        Object[] params ={
+                num,item_id
+        };
+        return DBUtil.exectuIUD(sql,params);
+    }
+
+    //用户支付成功后，更新物品数量
+    public static int updateCIItemNum(int item_id,int num){
+        String sql="update collectitem set item_num=? where item_id=?";
         Object[] params ={
                 num,item_id
         };
@@ -396,6 +409,17 @@ public class ItemDao {
         };
         return DBUtil.exectuIUD(sql,params);
     }
+
+    //物品数量为0
+    public static int updateAfterBuy(int itemid){
+        String sql="update item set item_check=2 where item_id=?";
+        Object[] params ={
+                itemid
+        };
+        return DBUtil.exectuIUD(sql,params);
+    }
+
+
 
     //确认转账
     public static int payChecked(int orderid){

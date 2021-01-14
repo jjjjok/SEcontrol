@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>后台管理</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
@@ -38,8 +38,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>后台管理</span>
     </div>
 </div>
@@ -92,10 +92,10 @@
                             <th>订单ID</th>
                             <th>商品id</th>
                             <th>价格</th>
-                            <th>数量</th>
-
                             <th>购买人</th>
                             <th>卖家收款账户</th>
+                            <th>买家收款账户</th>
+                            <th></th>
                             <th>订单状态</th>
                             <th>操作</th>
 
@@ -105,24 +105,23 @@
 
                             <tr>
                                 <td class="tc"><input name="id[]" value="${i.item_id}" type="checkbox"></td>
-                                <td>${i.confirm_id}</td>
+                                <td>${i.order_id}</td>
                                 <td>${i.item_id}</td>
                                 <td>${i.item_bprice}</td>
                                 <td>${i.order_num}</td>
-
                                 <td>${i.user_id}</td>
                                 <td>${i.seller_pay}</td>
+                                <td>${i.buyer_pay}</td>
                                 <c:if test="${i.order_state==1}">
                                 <td>等待发货</td>
                                     <td>
-                                        <a class="link-update" href="">等待用户操作</a>
-
+                                       等待用户操作
                                     </td>
                                 </c:if>
                                 <c:if test="${i.order_state==2}">
                                     <td>订单派送中</td>
                                     <td>
-                                        <a class="link-update" href="">等待用户操作</a>
+                                       等待用户操作
 
                                     </td>
                                 </c:if>
@@ -134,20 +133,62 @@
                                     </td>
                                 </c:if>
                                 <c:if test="${i.order_state==4}">
-                                    <td>商家已收到转账</td>
+                                    <td>用户已完成订单</td>
                                     <td>
-                                        <a class="link-update" href="">等待用户操作</a>
+                                        订单已关闭
 
                                     </td>
                                 </c:if>
                                 <c:if test="${i.order_state==5}">
                                     <td>用户申请退款</td>
                                     <td>
-                                        <a class="link-update" href="">等待用户操作</a>
+                                        <a class="link-update" href="${pageContext.request.contextPath}/itemmanager/refunddetail?id=${i.order_id}">查看详情</a>
 
                                     </td>
                                 </c:if>
+                                <c:if test="${i.order_state==6}">
+                                    <td>用户申请退款，卖家已同意</td>
+                                    <td>
+                                        <a class="link-update" href="${pageContext.request.contextPath}/itemmanager/refundchecked?id=${i.order_id}&cpage=${cpage}">已退款</a>
 
+                                    </td>
+                                </c:if>
+                                <c:if test="${i.order_state==7}">
+                                    <td>用户申请退款，卖家未同意</td>
+                                    <td>
+                                        等待用户操作
+
+                                    </td>
+                                </c:if>
+                                <c:if test="${i.order_state==8}">
+                                    <td>用户提出申诉</td>
+                                    <td>
+                                        <a class="link-update" href="${pageContext.request.contextPath}/itemmanager/appealdetail?id=${i.order_id}">查看详情</a>
+                                        <a class="link-update" href="${pageContext.request.contextPath}/itemmanager/toappealresult?id=${i.order_id}&cpage=${ordercpage}">提交结果</a>
+
+                                    </td>
+                                </c:if>
+                                <c:if test="${i.order_state==9}">
+                                    <td>管理员已退款</td>
+                                    <td>
+                                        订单已关闭
+
+                                    </td>
+                                </c:if>
+                                <c:if test="${i.order_state==10}">
+                                    <td>申诉已处理</td>
+                                    <td>
+                                        订单已关闭
+
+                                    </td>
+                                </c:if>
+                                <c:if test="${i.order_state==11}">
+                                    <td>用户申请换货</td>
+                                    <td>
+                                        等待用户操作
+
+                                    </td>
+                                </c:if>
 
                             </tr>
                         </c:forEach>

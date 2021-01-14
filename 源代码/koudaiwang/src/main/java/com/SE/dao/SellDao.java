@@ -78,5 +78,19 @@ public class SellDao {
         return  DBUtil.exectuIUD(sql,params1);
 
     }
+    //换货更新物流信息
+    public static int updateSend(int order_id,String name,String wuliuid){
+        String sql="update wuliu set wuliu_name=?,wuliu_id=?,wuliu_date=now() where order_id=?";
+        Object[] params ={
+                name,wuliuid,order_id
+        };
+        DBUtil.exectuIUD(sql,params);
+        sql="update orderinf set order_state=14 where order_id=?";
+        Object[] params1 ={
+                order_id
+        };
+        return  DBUtil.exectuIUD(sql,params1);
+
+    }
 
 }

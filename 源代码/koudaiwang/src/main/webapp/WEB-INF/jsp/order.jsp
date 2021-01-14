@@ -11,7 +11,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8"/>
-    <title>order</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/proList.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mygxin.css"/>
@@ -54,13 +54,13 @@
 </header>
 <div class="logo">
 <div  class = logo_1>
-    <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-    <span style = font-size:50px>口袋网</span>
+    <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+    <span style = font-size:35px>口袋网</span>
     <span>订单确认</span>
 </div>
 
 <div class="order cart mt"><!-----------------site------------------->
-    <div class="site"><p class="wrapper clearfix"><span class="fl"></span></p>
+    <div class="site"><p class="wrapper clearfix"><span class="fl"></span><img class="top" src="${pageContext.request.contextPath}/img/2.png" width="480px" height="65px"></p>
     </div><!-----------------orderCon------------------->
     <div class="orderCon wrapper clearfix">
         <div class="orderL fl"><!--------h3----------------><h3>选择收货地址信息<a href="${pageContext.request.contextPath}/item/toaddaddress" class="fr">新增地址</a></h3>
@@ -112,7 +112,7 @@
             <div class="count tips"><p><span class="fl">合计：</span><span class="fr">￥${sum}</span></p></div>
              <a href="${pageContext.request.contextPath}/item/pay?confirmid=${confirm}&sum=${sum}" class="pay">去支付</a></div>
     </div>
-</div><!--编辑弹框--><!--遮罩-->
+</div>
 </div>
 <div class="mask"></div>
 
@@ -120,7 +120,7 @@
 <div class="footer">
 
     <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
-        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号</p></div>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号 联系电话：18656600273</p></div>
 <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/pro.js" type="text/javascript" charset="utf-8"></script>

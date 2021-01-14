@@ -35,6 +35,7 @@ public class CollectDao {
                 i.setItem_bprice(rs.getFloat(7));
                 i.setCollect_count(rs.getInt(8));
                 i.setUser_id(rs.getInt(9));
+                i.setItem_num(rs.getInt(10));
 
 
                 list.add(i);
@@ -45,6 +46,29 @@ public class CollectDao {
             DBUtil.close(rs,ps,conn);
         }return list;
     }
+
+    //查看用户购物车物品数量
+    public static int selectCountByUId(int id){
+        int count=0;
+        ResultSet rs =null;
+        Connection conn= DBUtil.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            String sql="select count(*) from collectitem where user_id=?";
+            ps=conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                count=rs.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            DBUtil.close(rs,ps,conn);
+        }return count;
+    }
+
 
 
 
@@ -121,9 +145,9 @@ public class CollectDao {
     }
     //购物车遍历表添加
     public static int collectItemInsert(collectitem c){
-        String sql="insert into collectitem(item_id,item_inf,item_name,item_img,item_aprice,item_bprice,collect_count,user_id) values(?,?,?,?,?,?,?,?)";
+        String sql="insert into collectitem(item_id,item_inf,item_name,item_img,item_aprice,item_bprice,collect_count,user_id,item_num) values(?,?,?,?,?,?,?,?,?)";
         Object[] params ={
-                c.getItem_id(),c.getItem_inf(),c.getItem_name(),c.getItem_img(),c.getItem_aprice(),c.getItem_bprice(),c.getCollect_count(),c.getUser_id()
+                c.getItem_id(),c.getItem_inf(),c.getItem_name(),c.getItem_img(),c.getItem_aprice(),c.getItem_bprice(),c.getCollect_count(),c.getUser_id(),c.getItem_num()
         };
         return DBUtil.exectuIUD(sql,params);
     }
@@ -207,6 +231,33 @@ public class CollectDao {
             DBUtil.close(rs,ps,conn);
         }return pay;
     }
+
+    //根据物品id获取卖家名
+    public static String selectSellNameById(int itemid){
+        String pay="";
+        ResultSet rs =null;
+        Connection conn= DBUtil.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            String sql="select user_name from userinf where user_id=(select user_id from sell where item_id=?)";
+            ps=conn.prepareStatement(sql);
+
+            ps.setInt(1,itemid);
+            rs=ps.executeQuery();
+            while(rs.next()){
+
+                pay=rs.getString(1);
+
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            DBUtil.close(rs,ps,conn);
+        }return pay;
+    }
+
 
 
 }

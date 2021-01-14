@@ -6,6 +6,15 @@ public class collectitem {
     private String item_inf;
     private String item_img;
     private int user_id;
+    private int item_num;
+
+    public int getItem_num() {
+        return item_num;
+    }
+
+    public void setItem_num(int item_num) {
+        this.item_num = item_num;
+    }
 
     public int getUser_id() {
         return user_id;

@@ -53,8 +53,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>编辑地址信息</span>
     </div>
 </div>
@@ -69,7 +69,7 @@
 <div id="footer">
     <p class="dibu">
         Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
-        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号 联系电话：18656600273
     </p>
 </div>
 </body>

@@ -66,8 +66,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>首页</span>
     </div>
     <div class="all_logo_2_2">      <!--js搜索框的实现-->
@@ -75,7 +75,7 @@
             <div style="overflow: hidden;">
                 <i class="fas fa-search"></i>  <!--引入放大镜-->
                 <input type="text" id="input" name="text" placeholder="台灯" />
-                <a href="" id="a"> 搜索</a>
+                <a href="" id="a"> <img src="${pageContext.request.contextPath}/img/ss.png" width="27px" height="27px"></a>
                 <script type="text/javascript">
                     input.onkeyup=function(){
                         a.setAttribute("href","${pageContext.request.contextPath}/item/searchitem?text="+input.value);
@@ -108,7 +108,7 @@
             <dl>
                 <dt><span class="abl"></span><img src="${pageContext.request.contextPath}/imgs/${i.item_img}" width="219px" height="219px" /><span class="abr"></span></dt>
                 <dd>${i.item_name}</dd>
-                <dd><span>出售价：${i.item_bprice}</span></dd>
+                <dd><span>￥${i.item_bprice}</span></dd>
             </dl>
         </a></li>
 
@@ -116,8 +116,18 @@
 
 
 </ul><!----------------mask------------------->
+<div class="list-page">
+    共${itemsum}条记录，当前${itemcpage}/${itempage}页
+    <a href="${pageContext.request.contextPath}/item/selectflitem?cp=1&id=${id}">首页</a>
+    <a href="${pageContext.request.contextPath}/item/selectflitem?cp=${itemcpage-1<1?1:itemcpage-1}&id=${id}">上一页</a>
+    <a href="${pageContext.request.contextPath}/item/selectflitem?cp=${itemcpage+1>itempage?itempage:itemcpage+1}&id=${id}">下一页</a>
+    <a href="${pageContext.request.contextPath}/item/selectflitem?cp=${itempage}&id=${id}">尾页</a>
 
-
+</div>
+<div class="msk"></div><!--footer-->
+<div class="footer">
+    <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	联系电话：18656600273</p></div>
 
 <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript" charset="utf-8"></script>

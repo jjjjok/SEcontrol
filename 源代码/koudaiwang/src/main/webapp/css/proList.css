@@ -282,6 +282,7 @@ a.more {
 .detCon .proDet .proImg > img {
     width: 580px;
     height: 580px;
+    margin-top: 30px;
 }
 
 .detCon .smallImg > img {
@@ -631,7 +632,7 @@ section h3 {
 
 .cart div.site .top {
     margin-left: 290px;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .change {

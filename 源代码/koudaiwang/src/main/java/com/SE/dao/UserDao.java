@@ -62,6 +62,28 @@ public class UserDao {
           return count;
 
     }
+    public static int sendSearchById(String name){
+
+        ResultSet rs =null;
+        Connection conn= DBUtil.getConnection();
+        PreparedStatement ps = null;
+        int count =0;
+        try {
+            String sql="select count(*) from wuliu where wuliu_id=?";
+            ps=conn.prepareStatement(sql);
+            ps.setString(1,name);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            DBUtil.close(rs,ps,conn);
+        }
+        return count;
+
+    }
 //查找用户使用的地址
     public static String addSearchByUser(int name){
 
@@ -150,7 +172,7 @@ public class UserDao {
         try {
             String sql="select count(*) from userinf where user_name=? and user_pwd=?";
             ps=conn.prepareStatement(sql);
-            ps.setString(1,name);
+            ps.setString(1,""+name+"");
             ps.setString(2,pwd);
             rs=ps.executeQuery();
             while(rs.next()){
@@ -282,16 +304,16 @@ public class UserDao {
         }return list;
     }
     //后台搜索用户
-    public static ArrayList<userinf> selectUserByName(int cpage,int count,String name){
+    public static ArrayList<userinf> selectUserByName(int cpage,int count,int name){
         ArrayList<userinf> list = new ArrayList<userinf>();
         ResultSet rs =null;
         Connection conn= DBUtil.getConnection();
         PreparedStatement ps = null;
 
         try {
-            String sql="select user_id,user_name,user_pay,user_phone from userinf where user_name=? limit ?,?";
+            String sql="select user_id,user_name,user_pay,user_phone from userinf where user_id=? limit ?,?";
             ps=conn.prepareStatement(sql);
-            ps.setString(1,name);
+            ps.setInt(1,name);
             ps.setInt(2,(cpage-1)*count);
             ps.setInt(3,count);
             rs=ps.executeQuery();
@@ -315,7 +337,7 @@ public class UserDao {
         ResultSet rs =null;
         Connection conn= DBUtil.getConnection();
         PreparedStatement ps = null;
-        userinf user=null;
+        userinf user=new userinf();
 
         try {
             String sql="select * from userinf where user_id=?";

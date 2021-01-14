@@ -5,12 +5,12 @@
   Time: 20:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!--输出,条件,迭代标签库-->
+<%@ page language="java" contentType="text/html" pageEncoding="GBK"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!--���,����,������ǩ��-->
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>后台管理</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
@@ -19,14 +19,14 @@
 <header class = "container">
     <nav class="header_1">
         <ul style="z-index: 9999; position: relative">
-            <li><a href="#" style="text-indent:-15px">中国大陆<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
+            <li><a href="#" style="text-indent:-15px">�й���½<i class="fas fa-angle-down" style="float: left;margin-left: 67px; margin-top:-22px;"></i></a>
 
             </li>
             <c:if test="${isLogin !=1}">
-                <li><a href="${pageContext.request.contextPath}/user/tologin"style="color: red" >叮，请登录…</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/tologin"style="color: red" >�������¼��</a></li>
             </c:if>
             <c:if test="${isLogin ==1}">
-                <li><a href="" style="color: red" >你好，${name.user_name}</a></li>
+                <li><a href="" style="color: red" >��ã�${name.user_name}</a></li>
             </c:if>
         </ul>
     </nav>
@@ -34,17 +34,17 @@
         <ul class="header_2_1">
 
             <li class="header_2_1_1">
-                <a href="${pageContext.request.contextPath}/user/myorder">我的口袋</a>
+                <a href="${pageContext.request.contextPath}/user/myorder">�ҵĿڴ�</a>
             </li>
             <li class="header_2_1_2">
-                <a href="${pageContext.request.contextPath}/item/collectshow">购物车</a>
+                <a href="${pageContext.request.contextPath}/item/collectshow">���ﳵ</a>
             </li>
             <li class="header_2_1_3">
-                <a href="${pageContext.request.contextPath}/item/tousersell" >我要出售</a>
+                <a href="${pageContext.request.contextPath}/item/tousersell" >��Ҫ����</a>
             </li>
 
             <li class="header_2_1_5">
-                <a href="${pageContext.request.contextPath}/item/preselectallitem">首页</a>
+                <a href="${pageContext.request.contextPath}/item/preselectallitem">��ҳ</a>
             </li>
 
 
@@ -53,9 +53,9 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
-        <span>发布商品</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>�ڴ���</span>
+        <span>������Ʒ</span>
     </div>
 </div>
 
@@ -73,16 +73,16 @@
                     <form action="${pageContext.request.contextPath}/upload/useradditem" method="post" id="myform" name="myform" enctype="multipart/form-data">
                         <table class="insert-tab" width="100%">
                             <tbody><tr>
-                                <th width="120"><i class="require-red">*</i>分类：</th>
+                                <th width="120"><i class="require-red">*</i>���ࣺ</th>
                                 <td>
                                     <select name="fl" id="catid" class="required">
-                                        <option value="">请选择</option>
-                                        <option value="1">宿舍用品</option><option value="2">二手书本</option><option value="3">电子产品</option><option value="4">生活用品</option><option value="5">零食小吃</option>
+                                        <option value="">��ѡ��</option>
+                                        <option value="1">������Ʒ</option><option value="2">�����鱾</option><option value="3">���Ӳ�Ʒ</option><option value="4">������Ʒ</option><option value="5">��ʳС��</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
-                                <th><i class="require-red">*</i>商品名称：</th>
+                                <th><i class="require-red">*</i>��Ʒ���ƣ�</th>
                                 <td>
                                     <input class="common-text required" id="title" name="name"  size="50" value="" type="text">
                                 </td>
@@ -91,32 +91,32 @@
 
 
                             <tr>
-                                <th><i class="require-red">*</i>购买价格：</th>
+                                <th><i class="require-red">*</i>����۸�</th>
                                 <td><input class="common-text" name="aprice" size="50" value="" type="text"></td>
                             </tr>
                             <tr>
                             <tr>
-                                <th><i class="require-red">*</i>出售价格：</th>
+                                <th><i class="require-red">*</i>���ۼ۸�</th>
                                 <td><input class="common-text" name="bprice" size="50" value="" type="text"></td>
                             </tr>
                             <tr>
-                                <th><i class="require-red">*</i>数量：</th>
+                                <th><i class="require-red">*</i>������</th>
                                 <td><input class="common-text" name="num" size="50" value="" type="text"></td>
                             </tr>
 
 
 
-                            <th><i class="require-red">*</i>上传图片：</th>
-                            <td><input name="img" id="" type="file" multiple><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
+                            <th><i class="require-red">*</i>�ϴ�ͼƬ��</th>
+                            <td><input name="img" id="" type="file" multiple><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="�ϴ�ͼƬ"/>--></td>
                             </tr>
                             <tr>
-                                <th>描述：</th>
+                                <th>������</th>
                                 <td><textarea name="content" class="common-textarea" cols="30" style="width: 98%;" rows="10"></textarea></td>
                             </tr>
 
                             <th></th>
                             <td>
-                                <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                <input class="btn btn-primary btn6 mr10" value="�ύ" type="submit">
 
                             </td>
                             </tr>

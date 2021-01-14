@@ -1,9 +1,20 @@
 package com.SE.bean;
 
+import java.sql.Date;
+
 public class wuliu {
     private String wuliu_id;
     private int order_id;
     private String wuliu_name;
+    private Date wuliu_date;
+
+    public Date getWuliu_date() {
+        return wuliu_date;
+    }
+
+    public void setWuliu_date(Date wuliu_date) {
+        this.wuliu_date = wuliu_date;
+    }
 
     public String getWuliu_id() {
         return wuliu_id;

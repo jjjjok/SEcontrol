@@ -34,8 +34,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>回调页面</span>
     </div>
 <div class="order mt cart">

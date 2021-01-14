@@ -54,17 +54,18 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>购物车</span>
-    </div>
 
+    </div>
+</div>
 <div class="cart mt"><!-----------------logo------------------->
     <!--<div class="logo"><h1 class="wrapper clearfix"><a href="index.html"><img class="fl" src="img/temp/logo.png"></a><img class="top" src="img/temp/cartTop01.png"></h1></div>-->
     <!-----------------site------------------->
 
     <form action="${pageContext.request.contextPath}/item/collectsdelete" id="myform" method="post">
-    <div class="site"><p class=" wrapper clearfix"><span class="fl"></span><img class="top"></p></div><!-----------------table------------------->
+    <div class="site"><p class=" wrapper clearfix"><span class="fl"></span><img class="top" src="${pageContext.request.contextPath}/img/1.png" width="480px" height="65px"></p></div><!-----------------table------------------->
     <div class="table wrapper">
         <div class="tr">
             <div>商品</div>
@@ -89,7 +90,7 @@
             </a></div>
             <div class="price">￥${i.item_bprice}</div>
             <div class="number"><p class="num clearfix"><img class="fl sub" src="${pageContext.request.contextPath}/img/temp/sub.jpg">
-                <span datasrc="${i.item_id}"
+                <span datasrc="${i.item_id}" datasrc1="${i.item_num}"
 
                     class="fl">${i.collect_count}</span><img class="fl add" src="${pageContext.request.contextPath}/img/temp/add.jpg"></p>
             </div>
@@ -98,6 +99,9 @@
         </div>
 
 </c:forEach>
+        <c:if test="${count==0}">
+            <div class="goOn" style="display: block;">购物车还没有东西哦~<a href="${pageContext.request.contextPath}/item/preselectallitem">去看看</a></div>
+        </c:if>
         <script>
             function Delete(inf,url){
                 if(confirm(inf)){
@@ -115,7 +119,7 @@
         </script>
 
 
-        <div class="goOn">空空如也~<a href="index.html">去逛逛</a></div>
+
         <div class="tr clearfix"><label class="fl"><input class="checkAll" type="checkbox"/><span></span></label>
             <p class="fl"><a href="#">全选</a><a href="javascript:Deletecollects('确定删除这些商品吗','myform')" class="del">删除</a></p>
             <p class="fr"><span>共<small id="sl">0</small>件商品</span><span>合计:&nbsp;<small id="all">￥0.00</small></span><a
@@ -143,15 +147,16 @@
 <div class="footer">
 
     <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
-        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号</p></div><!----------------mask------------------->
-
-        </div>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号 联系电话：18656600273</p></div><!----------------mask------------------->
 
 
+
+
+<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/pro.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/cart.js" type="text/javascript" charset="utf-8"></script>
-</div>
+
 </body>
 </html>

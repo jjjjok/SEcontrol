@@ -12,9 +12,17 @@
     <meta charset="utf-8"/>
     <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mygxin.css"/>
+
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/index.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/proList.css"/>
+
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/myorder.css"/>
+    <script>
+        function Delete(inf,url){
+            if(confirm(inf)){
+                location.href=url;
+            }
+        }
+    </script>
 </head>
 <body><!------------------------------head------------------------------>
 <header class = "container">
@@ -45,8 +53,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>我的口袋</span>
     </div>
 </div><!------------------------------idea------------------------------>
@@ -54,7 +62,7 @@
     <div class="wrapper clearfix">
         <div class="zuo fl">
             <h3>
-                <p class="clearfix"><span class="fl">${name.user_name}</span><span class="fr"><a href="${pageContext.request.contextPath}/user/tologin">[退出登录]</a> </span></p></h3>
+                <p class="clearfix"><span class="fl">${name.user_name}</span><span class="fr"><a href="javascript:Delete('确定退出当前账户吗？','quit')">[退出登录]</a> </span></p></h3>
             <div><h4>我的交易</h4>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/item/collectshow">我的购物车</a></li>
@@ -73,20 +81,53 @@
                 </ul>
             </div>
         </div>
-        <div class="you fl"><h2>收货地址</h2>
-            <div class="add">
-                <div><a href="${pageContext.request.contextPath}/user/toaddaddress" id="addxad"><img src="${pageContext.request.contextPath}/img/jia.png"/></a><span>添加新地址</span></div>
-                <c:forEach var="add" items="${addlist}">
 
-                <div id="dizhi"><p>${add.user_name}</p>
-                    <p>${add.user_phone}</p>
-                    <p>${add.address}</p>
-                    <p class="addp"><a href="${pageContext.request.contextPath}/user/tochangeaddress?id=${add.id}"  id="readd">修改</a>
-                        <a href="javascript:Delete('确定删除该地址吗','deleteaddress?id=${add.id}')" id="deladd">删除</a></p>
-                    </div>
 
-                </c:forEach>
+        <div class="you fl">
+            <div class="my clearfix"><h2 class="fl">地址管理</h2></div>
+            <div class="dlist clearfix">
+                <ul class="fl clearfix" id="wa">
+                    <li class="on"><a href="${pageContext.request.contextPath}/user/toaddaddress">添加地址</a></li>
+
+                </ul>
+
+                </form>
             </div>
+
+            <c:forEach var="add" items="${addlist}">
+
+
+                <div class="dkuang"><p class="one"></p>
+                    <div class="word clearfix">
+                        <ul class="fl clearfix">
+                            <li>收货人：${add.user_name}</li>
+                            <li>联系方式：${add.user_phone}</li>
+
+                        </ul>
+                        </div>
+                    <div class="shohou clearfix">
+                        <p class="fl"><a href="#">收货地址：${add.address}</a></p>
+
+
+                        <p class="fr"><a href="${pageContext.request.contextPath}/user/tochangeaddress?id=${add.id}">编辑</a>
+                            <a href="javascript:Delete('确定删除该地址吗','deleteaddress?id=${add.id}')">删除</a>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+        </div>
+            </c:forEach>
+
+
+
 <script>
     function Delete(inf,url){
         if(confirm(inf)){
@@ -94,18 +135,17 @@
         }
     }
 </script>
-        </div>
-    </div>
-</div><!--编辑弹框--><!--遮罩-->
 
+    </div>
+</div>
 
 <div class="footer">
 
     <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
-        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号</p></div>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号 联系电话：18656600273</p></div>
 <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/user.js" type="text/javascript" charset="utf-8"></script>
-
+</div>
 </body>
 </html>

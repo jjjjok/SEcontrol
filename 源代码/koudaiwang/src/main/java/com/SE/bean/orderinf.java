@@ -12,6 +12,25 @@ public class orderinf {
     private float item_bprice;
     private String add_name;
     private String add_phone;
+    private String seller_name;
+
+    public String getSeller_name() {
+        return seller_name;
+    }
+
+    public void setSeller_name(String seller_name) {
+        this.seller_name = seller_name;
+    }
+
+    public String getBuyer_pay() {
+        return buyer_pay;
+    }
+
+    public void setBuyer_pay(String buyer_pay) {
+        this.buyer_pay = buyer_pay;
+    }
+
+    private String buyer_pay;
 
     public String getAdd_phone() {
         return add_phone;

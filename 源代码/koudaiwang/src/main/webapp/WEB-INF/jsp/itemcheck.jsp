@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>后台管理</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
@@ -38,8 +38,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>后台管理</span>
     </div>
 </div>
@@ -155,10 +155,10 @@
                     </table>
                     <div class="list-page">
                         共${itemsum}条记录，当前${itemcpage}/${itempage}页
-                        <a href="${pageContext.request.contextPath}/itemmanager/selectallitem?cp=1">首页</a>
-                        <a href="${pageContext.request.contextPath}/itemmanager/selectallitem?cp=${itemcpage-1<1?1:itemcpage-1}">上一页</a>
-                        <a href="${pageContext.request.contextPath}/itemmanager/selectallitem?cp=${itemcpage+1>itempage?itempage:itemcpage+1}">下一页</a>
-                        <a href="${pageContext.request.contextPath}/itemmanager/selectallitem?cp=${itempage}">尾页</a>
+                        <a href="${pageContext.request.contextPath}/itemmanager/itemcheck?cp=1">首页</a>
+                        <a href="${pageContext.request.contextPath}/itemmanager/itemcheck?cp=${itemcpage-1<1?1:itemcpage-1}">上一页</a>
+                        <a href="${pageContext.request.contextPath}/itemmanager/itemcheck?cp=${itemcpage+1>itempage?itempage:itemcpage+1}">下一页</a>
+                        <a href="${pageContext.request.contextPath}/itemmanager/itemcheck?cp=${itempage}">尾页</a>
 
                     </div>
                 </div>

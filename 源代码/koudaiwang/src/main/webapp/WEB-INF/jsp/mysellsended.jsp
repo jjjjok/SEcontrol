@@ -11,10 +11,17 @@
 <html>
 <head lang="en">
     <meta charset="utf-8"/>
-    <title>我的口袋</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/public.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/个人面板.css"/>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/myorder.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/index.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css"/>
+    <script>
+        function Delete(inf,url){
+            if(confirm(inf)){
+                location.href=url;
+            }
+        }
+    </script>
 </head>
 <body><!------------------------------head------------------------------>
 <header class = "container">
@@ -45,8 +52,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>我的口袋</span>
     </div>
 </div><!------------------------------idea------------------------------>
@@ -54,7 +61,7 @@
     <div class="wrapper clearfix">
         <div class="zuo fl">
             <h3>
-                <p class="clearfix"><span class="fl">${name.user_name}</span><span class="fr"><a href="${pageContext.request.contextPath}/user/tologin">[退出登录]</a> </span></p></h3>
+                <p class="clearfix"><span class="fl">${name.user_name}</span><span class="fr"><a href="javascript:Delete('确定退出当前账户吗？','quit')">[退出登录]</a> </span></p></h3>
             <div><h4>我的交易</h4>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/item/collectshow">我的购物车</a></li>
@@ -74,12 +81,14 @@
             </div>
         </div>
         <div class="you fl">
-
+            <div class="my clearfix"><h2 class="fl">我的发布</h2></div>
             <div class="dlist clearfix">
                 <ul class="fl clearfix" id="wa">
                     <li class="on"><a href="${pageContext.request.contextPath}/user/myselltosend">等待发货</a></li>
                     <li class="on"><a href="${pageContext.request.contextPath}/user/mysellsended">已发货</a></li>
-                    <li class="on"><a href="${pageContext.request.contextPath}/user/mysellsended">退款申请</a></li>
+                    <li class="on"><a href="${pageContext.request.contextPath}/user/mysellrefund">退款申请</a></li>
+                    <li class="on"><a href="${pageContext.request.contextPath}/user/mysellchange">换货申请</a></li>
+                    <li class="on"><a href="${pageContext.request.contextPath}/user/mysellfinish">已完成</a></li>
                 </ul>
 
                 </form>
@@ -117,13 +126,15 @@
 
         </div>
     </div>
+</div>
+</div>
+<div class="footer">
+
+    <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
+        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号 联系电话：18656600273</p></div></div>
 </div><!--返回顶部-->
 
-<div class="footer">
-    <p class="dibu">Copyright  ©2020-2022  哆啦A梦的口袋网版权所有	浙江省网络食品销售第三方平台提供者备案：浙网食A33010001<br/>
-        出版物网络交易平台服务经营备案号：新出发浙备字第002号	市场名称登记证：工商网市字3301004120号
-    </p>
-</div>
+
 <script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/user.js" type="text/javascript" charset="utf-8"></script>

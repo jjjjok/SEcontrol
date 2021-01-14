@@ -53,9 +53,9 @@ public class ManagerUserController {
         if(cp!=null){
             cpage=Integer.parseInt(cp);
         }
-        int result[]= PageDao.userNamePage(count,name);
+        int result[]= PageDao.userNamePage(count,Integer.parseInt(name));
 
-        ArrayList<userinf> list=UserDao.selectUserByName(cpage,count,name);
+        ArrayList<userinf> list=UserDao.selectUserByName(cpage,count,Integer.parseInt(name));
         req.setAttribute("userlist",list);
         req.setAttribute("usersum",result[0]);
         req.setAttribute("userpage",result[1]);

@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>后台管理</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
@@ -38,8 +38,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>后台管理</span>
     </div>
 </div>
@@ -90,7 +90,7 @@
             <form action="${pageContext.request.contextPath}/usermanager/deleteusers" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="insert.html"><i class="icon-font"></i>新增用户</a>
+
                         <a id="batchDel" href="javascript:DeleteUsers('确定删除这些用户吗','myform')"><i class="icon-font"></i>批量删除</a>
 
                     </div>

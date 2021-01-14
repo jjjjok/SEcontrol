@@ -10,7 +10,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>管理员登录</title>
+    <title></title>
     <<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css1/login.css"/>
 </head>
 <body>
@@ -33,8 +33,8 @@
 </header>
 <div class="logo">
     <div  class = logo_1>
-        <img src="${pageContext.request.contextPath}/img/logo.png" width="95" height="95" style = vertical-align:sub />
-        <span style = font-size:50px>口袋网</span>
+        <img src="${pageContext.request.contextPath}/img/logo.png" width="70" height="70" style = vertical-align:sub />
+        <span style = font-size:35px>口袋网</span>
         <span>管理员登录</span>
     </div>
 </div>
@@ -42,7 +42,7 @@
     <form action="${pageContext.request.contextPath}/usermanager/login" method="post">
         <p>管理员登录</p>
         <p><input type="text" name="name" value="" placeholder="账号"></p>
-        <p><input type="text" name="password" value="" placeholder="密码"></p>
+        <p><input type="password" name="password" value="" placeholder="密码"></p>
         <p><input type="submit" name="" value="登  录"></p>
     </form>
 </div>

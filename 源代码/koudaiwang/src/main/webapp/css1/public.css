@@ -414,6 +414,8 @@ article, aside, figcaption, figure, footer, header, hgroup, nav, section, summar
     padding: 30px 0;
     text-align: center;
     color: #fff;
+    position: fixed;
+    bottom: 0px;
 }
 
 /*********************gotop********************/

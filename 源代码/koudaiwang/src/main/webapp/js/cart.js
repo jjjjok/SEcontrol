@@ -21,8 +21,9 @@ $(function () {
     });
     $(".num .add").click(function () {
         var c = parseInt($(this).siblings("span").text());
-        if (c >= 5) {
-            confirm("限购5件")
+        var num=$(this).siblings("span").attr('datasrc1');
+        if (c >= num) {
+            confirm("超出库存数量！")
         } else {
             c++;
             $(this).siblings("span").text(c);
@@ -120,6 +121,8 @@ $(function () {
             $(".goCart span").text(c + d)
         }
     });
+
+
 
     $(".cancel").click(function () {
         $(".mask").hide();

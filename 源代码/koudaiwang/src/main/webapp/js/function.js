@@ -29,6 +29,27 @@ function CheckItem(obj) {
                 });
             }
             break;
+        case "sendid":
+            if (obj.value == "") {
+                msgBox.html('物流编号不能为空');
+                msgBox.addClass('empty');
+                flag = false;
+
+            } else {
+                var url = "sendidcheck?sendid=" + encodeURI($(obj).val()) + "&" + new Date().getTime();
+                $.get(url, function (data) {
+
+                    if (data == "false") {
+                        msgBox.html('物流编号不能重复');
+                        msgBox.addClass('empty');
+                        flag = false;
+                    } else {
+                        msgBox.html().removeClass('empty')
+                        flag = true;
+                    }
+                });
+            }
+            break;
         case "userphone":
 
             if (obj.value == "") {
@@ -76,15 +97,6 @@ function CheckItem(obj) {
         case "oid":
             if (obj.value == "") {
                 msgBox.html('订单号不能为空');
-                msgBox.addClass('empty');
-                flag = false;
-            }else{
-                flag = true;
-            }
-            break;
-        case "sendid":
-            if (obj.value == "") {
-                msgBox.html('物流编号不能为空');
                 msgBox.addClass('empty');
                 flag = false;
             }else{
