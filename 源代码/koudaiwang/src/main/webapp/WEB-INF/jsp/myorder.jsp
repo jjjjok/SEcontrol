@@ -121,6 +121,7 @@
                 <c:if test="${order.order_state==2}">
                 <p class="fr"><a href="${pageContext.request.contextPath}/user/itemconfirm?id=${order.order_id}">确认收货</a>
                     <a href="${pageContext.request.contextPath}/user/torefund?id=${order.order_id}">退款</a>
+                    <a href="${pageContext.request.contextPath}/user/togoodchange?id=${order.order_id}">换货</a>
                     </p>
             </c:if>
             <c:if test="${order.order_state==3}">
@@ -136,11 +137,31 @@
                         <p class="fr">管理员退款中</p>
                     </c:if>
                     <c:if test="${order.order_state==7}">
-                        <p class="fr"><a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">商家未同意，点此申诉</a></p>
+                        <p class="fr">
+                            <a>商家未同意</a>
+                            <a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">点此申诉</a></p>
                     </c:if>
                     <c:if test="${order.order_state==9}">
                         <p class="fr">管理员已退款</p>
                     </c:if>
+                    <c:if test="${i.order_state==10}">
+                        <p class="fr"> <a href="${pageContext.request.contextPath}/user/appealresultdetail?id=${order.order_id}">查看申诉处理结果</a></p>
+                    </c:if>
+                    <c:if test="${order.order_state==11}">
+                        <p class="fr">换货申请已受理</p>
+                    </c:if>
+                    <c:if test="${order.order_state==12}">
+                        <p class="fr">商家换货中</p>
+                    </c:if>
+                    <c:if test="${order.order_state==13}">
+                        <a>商家未同意</a>
+                        <p class="fr"><a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">点此申诉</a></p>
+                    </c:if>
+                    <c:if test="${order.order_state==14}">
+                    <p class="fr"><a href="${pageContext.request.contextPath}/user/itemconfirm?id=${order.order_id}">确认收货</a>
+                        <a href="${pageContext.request.contextPath}/user/torefund?id=${order.order_id}">退款</a>
+
+                        </c:if>
 
             </div>
 

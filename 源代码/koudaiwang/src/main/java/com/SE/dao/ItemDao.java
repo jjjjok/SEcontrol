@@ -136,7 +136,7 @@ public class ItemDao {
         PreparedStatement ps = null;
 
         try {
-            String sql="select confirm_id,order_date,order_state,item_id,item_img,item_bprice,address,add_name,item_name,order_num,seller_pay,user_id,order_id from orderinf where order_state is not null limit ?,?";
+            String sql="select confirm_id,order_date,order_state,item_id,item_img,item_bprice,address,add_name,item_name,order_num,seller_pay,user_id,order_id,buyer_pay from orderinf where order_state is not null limit ?,?";
             ps=conn.prepareStatement(sql);
             ps.setInt(1,(cpage-1)*count);
             ps.setInt(2,count);
@@ -156,6 +156,7 @@ public class ItemDao {
                 o.setSeller_pay(rs.getString(11));
                 o.setUser_id(rs.getInt(12));
                 o.setOrder_id(rs.getInt(13));
+                o.setBuyer_pay(rs.getString(14));
                 list.add(o);
             }
         } catch (SQLException throwables) {

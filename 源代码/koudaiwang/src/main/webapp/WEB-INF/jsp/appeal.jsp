@@ -78,8 +78,9 @@
                                     <select name="fl" id="catid" class="required">
                                         <option value="">请选择</option>
                                         <option value="1">我的退款请求被拒绝了</option>
-                                        <option value="2">商家有不诚信行为</option>
-                                        <option value="3">其他</option>
+                                        <option value="2">我的换货请求被拒绝了</option>
+                                        <option value="3">商家有不诚信行为</option>
+                                        <option value="4">其他</option>
                                     </select>
                                 </td>
                             </tr>

@@ -56,7 +56,7 @@
             <p>用户注册</p>
             <p><input type="text" name="username" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入用户名"><span class="empty"></span></p>
             <p><input type="text" name="userphone" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入手机号"><span class="empty"></span></p>
-            <p><input type="text" name="pay" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入支付宝账户，用于收款"><span class="empty"></span></p>
+            <p><input type="text" name="pay" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入微信账户，用于收款"><span class="empty"></span></p>
             <p><input type="password" name="userpwd" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入密码"><span class="empty"></span></p>
             <p><input type="password" name="userpwd1" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请确认密码"><span class="empty"></span></p>
             <p><input type="submit" name="" value="注册" ></p>

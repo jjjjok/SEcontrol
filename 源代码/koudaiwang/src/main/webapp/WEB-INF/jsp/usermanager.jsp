@@ -117,7 +117,7 @@
                             <td>${u.user_pay}</td>
 
                             <td>
-                                <a class="link-update" href="${pageContext.request.contextPath}/usermanager/touserupdatemanager?id=${u.user_id}&cpage=${cpage}">修改</a>
+
                                 <a class="link-del" href="javascript:Delete('确定删除该用户吗','deleteuser?id=${u.user_id}&cpage=${usercpage}')">删除</a>
                             </td>
                         </tr>

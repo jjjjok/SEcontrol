@@ -69,7 +69,7 @@
         <p><input type="text" name="userpwd1" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请确认新密码"><span class="empty"></span></p>
 
         <p><input type="submit" name="" value="确认"></p>
-        <p class="txt"><a href="#"><span></span>已有账号登录</a></p>
+        <p class="txt"><a href="${pageContext.request.contextPath}/user/tologin"><span></span>已有账号登录</a></p>
         </form>
 </div>
 

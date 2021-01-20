@@ -52,9 +52,15 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
         SmartUpload su=new SmartUpload();
         su.initialize(servletConfig,request,response);
         try {
+            su.setAllowedFilesList("jpg,png");
             su.upload();
         } catch (Exception e) {
-            e.printStackTrace();
+            PrintWriter out = response.getWriter();
+            out.write("<script>");
+            out.write("alert('只能上传jpg或png格式的图片！');");
+            out.write("location.href='/kdw/item/tousersell'");
+            out.write("</script>");
+            out.close();
         }
         Files fs=su.getFiles();
         File f=fs.getFile(0);
@@ -107,17 +113,24 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
         HttpSession session=request.getSession();
         String islogin=(String)session.getAttribute("isLogin");
         userinf user=(userinf)session.getAttribute("name");
+
         if(user!=null&&islogin.equals("1")){
             int user_id=user.getUser_id();
         SmartUpload su=new SmartUpload();
 
 
         su.initialize(servletConfig,request,response);
-        su.setAllowedFilesList("png,jpg");
+
         try {
+            su.setAllowedFilesList("jpg,png");
             su.upload();
         } catch (Exception e) {
-            e.printStackTrace();
+            PrintWriter out = response.getWriter();
+            out.write("<script>");
+            out.write("alert('只能上传jpg或png格式的图片！');");
+            out.write("location.href='/kdw/item/tousersell'");
+            out.write("</script>");
+            out.close();
         }
         Files fs=su.getFiles();
         File f=fs.getFile(0);
@@ -189,11 +202,17 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
             int user_id=user.getUser_id();
             SmartUpload su=new SmartUpload();
             su.initialize(servletConfig,request,response);
-            try {
-                su.upload();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        try {
+            su.setAllowedFilesList("jpg,png");
+            su.upload();
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.write("<script>");
+            out.write("alert('只能上传jpg或png格式的图片！');");
+            out.write("location.href='/kdw/item/tousersell'");
+            out.write("</script>");
+            out.close();
+        }
             Files fs=su.getFiles();
             File f=fs.getFile(0);
             String fname=f.getFileName();
@@ -270,9 +289,15 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
         SmartUpload su=new SmartUpload();
         su.initialize(servletConfig,request,response);
         try {
+            su.setAllowedFilesList("jpg,png");
             su.upload();
         } catch (Exception e) {
-            e.printStackTrace();
+            PrintWriter out = response.getWriter();
+            out.write("<script>");
+            out.write("alert('只能上传jpg或png格式的图片！');");
+            out.write("location.href='/kdw/item/tousersell'");
+            out.write("</script>");
+            out.close();
         }
         Files fs=su.getFiles();
         File f=fs.getFile(0);
@@ -303,7 +328,9 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
             }else if(fl_id==2){
                 reason="商家发错了";
             }else if(fl_id==3){
-                reason="我想换一件";
+                reason="我收到货了，但是想换一件";
+            }else if(fl_id==4){
+                reason="我没收到货，想换一件";
             }
             i.setChange_rea(reason);
             i.setUser_id(user_id);
@@ -344,9 +371,15 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
         SmartUpload su=new SmartUpload();
         su.initialize(servletConfig,request,response);
         try {
+            su.setAllowedFilesList("jpg,png");
             su.upload();
         } catch (Exception e) {
-            e.printStackTrace();
+            PrintWriter out = response.getWriter();
+            out.write("<script>");
+            out.write("alert('只能上传jpg或png格式的图片！');");
+            out.write("location.href='/kdw/item/tousersell'");
+            out.write("</script>");
+            out.close();
         }
         Files fs=su.getFiles();
         File f=fs.getFile(0);
@@ -374,8 +407,10 @@ public class UploadController implements ServletConfigAware,ServletContextAware 
                 reason="我的退款请求被拒绝了";
 
             }else if(fl_id==2){
-                reason="商家有不诚信行为";
+                reason="我的换货请求被拒绝了";
             }else if(fl_id==3){
+                reason="商家有不诚信行为";
+            }else if(fl_id==4){
                 reason="其他";
             }
             i.setAppeal_rea(reason);

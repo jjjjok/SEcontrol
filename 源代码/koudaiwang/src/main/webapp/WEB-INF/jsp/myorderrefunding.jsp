@@ -117,7 +117,8 @@
                         <p class="fr">管理员退款中</p>
                     </c:if>
                     <c:if test="${order.order_state==7}">
-                        <p class="fr"><a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">商家未同意，点此申诉</a></p>
+                        <a>商家未同意</a>
+                        <p class="fr"><a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">点此申诉</a></p>
                     </c:if>
 
 

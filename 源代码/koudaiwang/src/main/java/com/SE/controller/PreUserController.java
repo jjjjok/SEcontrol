@@ -161,8 +161,10 @@ public class PreUserController {
     //检查用户名是否存在
     @RequestMapping(value = "/usernamecheck")
     @ResponseBody
-    public void userNameCheck(@RequestParam("username")String username1,HttpServletResponse res) throws IOException {
-        String username = new String(username1.getBytes("ISO-8859-1"),"UTF-8");
+    public void userNameCheck(@RequestParam("username")String username,HttpServletResponse res,HttpServletRequest req) throws IOException {
+        req.setCharacterEncoding("utf-8");
+        res.setContentType("text/html;charset=UTF-8");
+
         int count=UserDao.userSearchByName(username);
         PrintWriter out = res.getWriter();
         if(count>0){
@@ -189,9 +191,11 @@ public class PreUserController {
     //检查手机号是否匹配
     @RequestMapping(value = "/userphonecheck")
     @ResponseBody
-    public void userPhoneCheck(@RequestParam("username")String username1,@RequestParam("userphone")String userphone, HttpServletResponse res) throws IOException {
-        if(!username1.equals("")){
-            String username = new String(username1.getBytes("ISO-8859-1"),"UTF-8");
+    public void userPhoneCheck(@RequestParam("username")String username,@RequestParam("userphone")String userphone, HttpServletResponse res,HttpServletRequest req) throws IOException {
+        req.setCharacterEncoding("utf-8");
+        res.setContentType("text/html;charset=UTF-8");
+        if(!username.equals("")){
+
             int count =UserDao.userSearchByNameAndPhone(username,userphone);
 
         PrintWriter out = res.getWriter();

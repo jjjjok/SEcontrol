@@ -161,9 +161,34 @@ public class UserDao {
 
     }
 
+    //根据id查找收款账户
+    public static String userPaySearchById(int uid){
+
+        ResultSet rs =null;
+        Connection conn= DBUtil.getConnection();
+        PreparedStatement ps = null;
+        String user_pay="";
+        try {
+            String sql="select user_pay from userinf where user_id=?";
+            ps=conn.prepareStatement(sql);
+            ps.setInt(1,uid);
+
+            rs=ps.executeQuery();
+            while(rs.next()){
+                user_pay = rs.getString(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            DBUtil.close(rs,ps,conn);
+        }
+        return user_pay;
+
+    }
 
 
-//登录时搜索用户
+
+    //登录时搜索用户
     public static int selectByName(String name,String pwd){
         ResultSet rs =null;
         Connection conn= DBUtil.getConnection();

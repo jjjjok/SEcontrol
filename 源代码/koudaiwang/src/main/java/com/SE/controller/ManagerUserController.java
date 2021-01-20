@@ -67,11 +67,7 @@ public class ManagerUserController {
     public String toManager(){
         return "manager";
     }
-    //转至用户更新页面
-    @RequestMapping(value = "/touserupdatemanager")
-    public String toUserUpdateManager(){
-        return "userupdatemanager";
-    }
+
     //管理员修改用户
     @RequestMapping(value = "/userupdatemanager")
     public void userUpdateManager(HttpServletResponse resp,HttpServletRequest req)throws ServletException,IOException{

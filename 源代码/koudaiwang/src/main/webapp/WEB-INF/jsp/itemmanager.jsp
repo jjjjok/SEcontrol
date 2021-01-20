@@ -123,7 +123,7 @@
                             <td>${i.item_inf}</td>
 
                             <td>
-                                <a class="link-update" href="${pageContext.request.contextPath}/user/touserupdatemanager?id=${u.user_id}&cpage=${cpage}">修改</a>
+
                                 <a class="link-del" href="javascript:Delete('确定删除该商品吗','deleteitem?id=${i.item_id}&cpage=${itemcpage}')">删除</a>
                             </td>
                         </tr>

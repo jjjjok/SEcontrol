@@ -155,6 +155,7 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             else{
 
                 ItemDao.updateAfterBuy(item_id);
+                CollectDao.collectItemDeleteById(item_id);
             }
             OrderDao.addressOrderAdd(i,addid,a.getUser_name(),a.getUser_phone());
         }
@@ -369,6 +370,7 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
         String islogin=(String)session.getAttribute("isLogin");
         userinf user=(userinf)session.getAttribute("name");
         int uid=user.getUser_id();
+        if(id!=null){
 
         for(int i=0;i< id.length;i++){
             item it=new item();
@@ -377,6 +379,9 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             CollectDao.collectItemDelete(uid,it.getItem_id());
         }
         resp.sendRedirect("collectshow");
+        }else{
+            resp.sendRedirect("collectshow");
+        }
 
     }
 
@@ -401,6 +406,8 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
         int uid=user.getUser_id();
         String ids[]=itemids.split(",");
         ArrayList<collectitem> list=new ArrayList<collectitem>();
+
+        String buyer_pay=UserDao.userPaySearchById(uid);
         float sum=0;
         for(int i=0;i< ids.length;i++){
             collectitem p=CollectDao.selectCollectByUIId(uid,Integer.parseInt(ids[i]));
@@ -409,7 +416,7 @@ public void toUserSell(HttpServletResponse resp,HttpServletRequest req)throws Se
             String item_name=p.getItem_name();
             String seller_pay=CollectDao.selectPayById(Integer.parseInt(ids[i]));
             String seller_name=CollectDao.selectSellNameById(Integer.parseInt(ids[i]));
-            String buyer_pay=user.getUser_pay();
+
 
             int v=OrderDao.orderAdd(confirmid,uid,p.getItem_id(),p.getCollect_count(),img,bprice,item_name,seller_pay,buyer_pay,seller_name);
             float price=p.getCollect_count()*p.getItem_bprice();

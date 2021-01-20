@@ -79,7 +79,8 @@
                                         <option value="">请选择</option>
                                         <option value="1">收到的物品损坏了</option>
                                         <option value="2">商家发错了</option>
-                                        <option value="3">我想换一件</option>
+                                        <option value="3">我收到货了，但是想换一件</option>
+                                        <option value="4">我没收到货，想换一件</option>
 
                                     </select>
                                 </td>

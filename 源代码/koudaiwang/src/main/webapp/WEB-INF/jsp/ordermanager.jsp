@@ -95,7 +95,7 @@
                             <th>购买人</th>
                             <th>卖家收款账户</th>
                             <th>买家收款账户</th>
-                            <th></th>
+
                             <th>订单状态</th>
                             <th>操作</th>
 
@@ -108,7 +108,6 @@
                                 <td>${i.order_id}</td>
                                 <td>${i.item_id}</td>
                                 <td>${i.item_bprice}</td>
-                                <td>${i.order_num}</td>
                                 <td>${i.user_id}</td>
                                 <td>${i.seller_pay}</td>
                                 <td>${i.buyer_pay}</td>
@@ -149,7 +148,7 @@
                                 <c:if test="${i.order_state==6}">
                                     <td>用户申请退款，卖家已同意</td>
                                     <td>
-                                        <a class="link-update" href="${pageContext.request.contextPath}/itemmanager/refundchecked?id=${i.order_id}&cpage=${cpage}">已退款</a>
+                                        <a class="link-update" href="${pageContext.request.contextPath}/itemmanager/refundchecked?id=${i.order_id}&cpage=${ordercpage}">已退款</a>
 
                                     </td>
                                 </c:if>

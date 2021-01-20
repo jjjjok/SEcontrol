@@ -16,7 +16,7 @@ public class PreUserControllerTest {
     PreUserController pu=new PreUserController();
     @Test
     public void userRegisterTest(){
-        String username="zs";
+        String username="uh";
         String userphone="18656600273";
         String pay="11";
         String userpwd="111";

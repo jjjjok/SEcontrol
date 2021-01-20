@@ -120,7 +120,8 @@
                             <p class="fr">商家换货中</p>
                         </c:if>
                         <c:if test="${order.order_state==13}">
-                            <p class="fr"><a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">商家未同意，点此申诉</a></p>
+                            <a>商家未同意</a>
+                            <p class="fr"><a href="${pageContext.request.contextPath}/user/toappeal?id=${order.order_id}">点此申诉</a></p>
                         </c:if>
                         <c:if test="${order.order_state==14}">
                         <p class="fr"><a href="${pageContext.request.contextPath}/user/itemconfirm?id=${order.order_id}">确认收货</a>

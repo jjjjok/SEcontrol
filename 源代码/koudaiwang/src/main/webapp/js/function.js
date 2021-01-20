@@ -134,8 +134,11 @@ function CheckForm(frm){
         if(els[i]!=null){
             if(els[i].getAttribute("onblur")){
                 CheckItem(els[i]);
+                if(flag==false)
+                    return false;
+
             }
         }
     }
-    return flag;
+
 }

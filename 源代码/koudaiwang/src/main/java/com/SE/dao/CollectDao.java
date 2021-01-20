@@ -161,7 +161,14 @@ public class CollectDao {
         return DBUtil.exectuIUD(sql,params);
     }
 
-
+    //collectitem删除
+    public static int collectItemDeleteById(int itemid){
+        String sql="delete from collectitem where item_id=?";
+        Object[] params ={
+                itemid
+        };
+        return DBUtil.exectuIUD(sql,params);
+    }
 
 
 

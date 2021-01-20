@@ -119,7 +119,7 @@
                         <p class="fr">管理员已退款</p>
                     </c:if>
                     <c:if test="${order.order_state==10}">
-                        <p class="fr"> <a href="${pageContext.request.contextPath}/user/appealresultdetail?id=${order.order_id}">查看申诉处理结果</a></p>
+                        <p class="fr"> <a href="${pageContext.request.contextPath}/user/appealresultdetail?id=${order.order_id}">查看申诉结果</a></p>
                     </c:if>
 
 

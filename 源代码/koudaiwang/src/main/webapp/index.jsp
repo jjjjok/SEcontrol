@@ -71,7 +71,7 @@
         <div id="wrap">
             <div style="overflow: hidden;">
                 <i class="fas fa-search"></i>  <!--引入放大镜-->
-                <input type="text" id="input" name="text" placeholder="台灯" />
+                <input type="text" id="input" name="text" placeholder="台灯" style="margin-left:150px "/>
                 <a href="" id="a"> <img src="${pageContext.request.contextPath}/img/ss.png" width="27px" height="27px"></a>
                 <script type="text/javascript">
                     input.onkeyup=function(){

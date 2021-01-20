@@ -211,10 +211,10 @@ public String toAppealResult(@RequestParam("id")String oid,@RequestParam("cpage"
 
             String id=req.getParameter("id");
             refund r=RefundDao.getRefundDetailById(Integer.parseInt(id));
-        int uid=r.getUser_id();
-        userinf user=UserDao.selectById(uid);
-        String username = user.getUser_name();
-        String userphone=user.getUser_phone();
+            int uid=r.getUser_id();
+            userinf user=UserDao.selectById(uid);
+            String username = user.getUser_name();
+            String userphone=user.getUser_phone();
             req.setAttribute("refund", r);
             req.setAttribute("username", username);
             req.setAttribute("userphone", userphone);
