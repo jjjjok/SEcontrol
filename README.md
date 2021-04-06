@@ -18,12 +18,12 @@
   - koudaiwang-src-main-java-com-SE-util——工具类
   - koudaiwang-src-main-webapp——前端相关
  ## 概览
-项目上线过，但云服务器没续费。截点图放一放
-![image](https://user-images.githubusercontent.com/68909444/113661171-2d2da300-96d8-11eb-8c7e-0738c1b8d8ca.png)
+项目部署上线过，但云服务器没续费，被释放了。截点图放一放
+![image](https://user-images.githubusercontent.com/68909444/113661619-0885fb00-96d9-11eb-8b54-5c0f6800ae6d.png)
+
+![image](https://user-images.githubusercontent.com/68909444/113661846-7500fa00-96d9-11eb-99f5-03c449944b22.png)
+![image](https://user-images.githubusercontent.com/68909444/113661862-7f22f880-96d9-11eb-8f6b-62152fd63d58.png)
+![image](https://user-images.githubusercontent.com/68909444/113661892-8c3fe780-96d9-11eb-812f-6d98e0f94fbc.png)
+![image](https://user-images.githubusercontent.com/68909444/113661940-a7125c00-96d9-11eb-8887-7d2ef9d43997.png)
 
 
-![image](https://user-images.githubusercontent.com/68909444/113661226-49c9db00-96d8-11eb-9733-a60536039d74.png)
-![image](https://user-images.githubusercontent.com/68909444/113661248-4f272580-96d8-11eb-9544-0d2c1d1c9f4d.png)
-![image](https://user-images.githubusercontent.com/68909444/113661271-5ea66e80-96d8-11eb-8d1b-a12ff06cb023.png)
-
-![image](https://user-images.githubusercontent.com/68909444/113661352-80075a80-96d8-11eb-9ca5-66d84cba009e.png)
